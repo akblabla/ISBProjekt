@@ -52,8 +52,8 @@ private:
 	fract filterBuffer[FIR_SIZE][3][2];
 	fract* readyBuffer[3];
 	fract* loadingBuffer[3];
-	section("sdram0_bank0") volatile short filterDMA0_Src_Array[FIR_SIZE+1];
-	volatile short filterDMA0_Dst_Array[FIR_SIZE+1];
+	section("sdram0_bank0") volatile short filterDMA0_Src_Array[FIR_SIZE];
+	volatile short filterDMA0_Dst_Array[FIR_SIZE];
 
 };
 

@@ -7,20 +7,20 @@
 
 #if !defined(CONTROLLER__INCLUDED_)
 #define CONTROLLER__INCLUDED_
-
+#include <stdfix.h>
 
 class Controller
 {
 
 public:
 
-	Controller();
+	Controller(fract* firFilter);
 	virtual ~Controller();
 	void pressedSwitch(short sw);
 
 protected:
     void updateUI();
-	short m_band;
+	//short m_band;
 };
 
 #endif // !defined(CONTROLLER__INCLUDED_)

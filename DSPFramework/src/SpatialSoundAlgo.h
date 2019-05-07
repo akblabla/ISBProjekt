@@ -16,14 +16,15 @@
 
 class SpatialSoundAlgo : public Algorithm {
 public:
-	SpatialSoundAlgo();
+	SpatialSoundAlgo(fract* firFilter);
 	virtual ~SpatialSoundAlgo();
 
 	virtual void process(short* input, short* output, short len);
-	virtual void create(void);
+	virtual void create();
+	virtual void create(fract* filter, int length);
 
 	float fastInverseSquare(float input);
-	fract _firFilter[FIR_SIZE];
+	fract* _firFilter;
 	fract _delayLine[FIR_SIZE];
 	fir_state_fx16 _filterState;
 

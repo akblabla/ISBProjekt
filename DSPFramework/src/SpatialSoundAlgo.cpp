@@ -8,8 +8,8 @@
 #include "SpatialSoundAlgo.h"
 
 
-SpatialSoundAlgo::SpatialSoundAlgo() {
-
+SpatialSoundAlgo::SpatialSoundAlgo(fract* firFilter) {
+	_firFilter = firFilter;
 
 }
 float y = 0;
@@ -27,12 +27,17 @@ void SpatialSoundAlgo::process(short* input, short* output, short len) {
 
 }
 
-void SpatialSoundAlgo::create(void) {
-	for (int i = 0; i<FIR_SIZE; ++i){
+void SpatialSoundAlgo::create() {
+	fir_init(_filterState,_firFilter,_delayLine,FIR_SIZE,0);
+}
 
-		_firFilter[i] =1.0/FIR_SIZE;
+void SpatialSoundAlgo::create(fract* filter, int length) {
+	for (int i = 0; i<FIR_SIZE || i<length; ++i){
+		if (i<length){
+			_firFilter[i] =filter[i];
+		}else
+			_firFilter[i] = 0;
 	}
-
 	fir_init(_filterState,_firFilter,_delayLine,FIR_SIZE,0);
 }
 

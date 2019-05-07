@@ -21,20 +21,22 @@ void InitProcess(Algorithm *left, Algorithm *right);
 // Initialization of control for switch inputs
 void InitSwitch(Controller *left, Controller *right);
 
-SpatialSoundAlgo leftAlgo;
-SpatialSoundAlgo rightAlgo;
+fract firFilter[FIR_SIZE];
+SpatialSoundAlgo leftAlgo(firFilter);
+SpatialSoundAlgo rightAlgo(firFilter);
+
 
 // Instance of dummy algorithm for left and right stereo channels
 
 // Instance of controller left and right
-//Controller CtrlLeft(&FilterLeft);
-//Controller CtrlRight(&FilterRight);
+Controller CtrlLeft(firFilter);
+Controller CtrlRight(firFilter);
 
 void InitAlgoProcess(void)
 {
 	leftAlgo.create();
 	rightAlgo.create();
-	//InitSwitch(&CtrlLeft, &CtrlRight);
+	InitSwitch(&CtrlLeft, &CtrlRight);
 }
 
 void InitSystemHardware(void)

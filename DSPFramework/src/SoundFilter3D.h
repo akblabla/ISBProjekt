@@ -8,7 +8,7 @@
 #ifndef SOUNDFILTER3D_H_
 #define SOUNDFILTER3D_H_
 #include <stdfix.h>
-#define FIR_SIZE 150
+#define FIR_SIZE 100
 	struct fractVector3d{
 		fract x;
 		fract y;

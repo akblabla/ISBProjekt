@@ -9,19 +9,21 @@
 #define SOUNDFILTER3D_H_
 #include <stdfix.h>
 #define FIR_SIZE 256
-	struct fractVector3d{
-		fract x;
-		fract y;
-		fract z;		
-	};
-	struct accumMatrix3_3{
-		accum value[3][3];
-	};
-	struct accumVector3d{
-		accum x;
-		accum y;
-		accum z;		
-	};
+
+struct fractVector3d{
+	fract x;
+	fract y;
+	fract z;
+};
+struct accumMatrix3_3{
+	accum value[3][3];
+};
+struct accumVector3d{
+	accum x;
+	accum y;
+	accum z;
+};
+
 class SoundFilter3D {
 public:
 	SoundFilter3D();

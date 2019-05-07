@@ -33,28 +33,28 @@ C_DEPS += \
 system/startup_ldf/app_cplbtab.doj: ../system/startup_ldf/app_cplbtab.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-abeab206f40f3f95e7bcb3bf676934c9.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_cplbtab.d" -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_cplbtab.d" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 system/startup_ldf/app_handler_table.doj: ../system/startup_ldf/app_handler_table.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-abeab206f40f3f95e7bcb3bf676934c9.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_handler_table.d" -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_handler_table.d" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 system/startup_ldf/app_heaptab.doj: ../system/startup_ldf/app_heaptab.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-abeab206f40f3f95e7bcb3bf676934c9.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_heaptab.d" -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_heaptab.d" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 system/startup_ldf/app_startup.doj: ../system/startup_ldf/app_startup.s
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin Assembler'
-	easmblkfn -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-12e15753c93ff1956a216f51690540e9.txt -gnu-style-dependencies -MM -Mo "system/startup_ldf/app_startup.d" -o "$@" "$<"
+	easmblkfn -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-298bd2a37dbc75122b64bfe3937ef585.txt -gnu-style-dependencies -MM -Mo "system/startup_ldf/app_startup.d" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

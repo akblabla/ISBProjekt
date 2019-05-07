@@ -6,12 +6,17 @@
 ///////////////////////////////////////////////////////////
 
 #include "Controller.h"
+#include "SoundFilter3d.h"
+#include "RegisterManager.h"
 
-Controller::Controller() : m_band(0)
+SoundFilter3D filterFactory;   // create sound filter with orientation vector as parameter
+fract firFilter[FIR_SIZE];
+
+
+Controller::Controller() //: m_band(0)
 {
 
 }
-
 
 Controller::~Controller()
 {
@@ -20,22 +25,30 @@ Controller::~Controller()
 
 void Controller::updateUI()
 {
-	//SetMaskLed(0x0f, m_band<<4);
-}
 
+}
 
 void Controller::pressedSwitch(short sw)
 {
-	/*switch (sw) {
+	fractVector3d vector;
+	switch (sw) {
 		case KEY_SW4:
+			vector.x++;
+			filterFactory.makeFilter(firFilter, vector);
 			break;
 		case KEY_SW5:
+			vector.x--;
+			filterFactory.makeFilter(firFilter, vector);
 			break;
 		case KEY_SW6:
+			vector.y++;
+			filterFactory.makeFilter(firFilter, vector);
 			break;
 		case KEY_SW7:
+			vector.y--;
+			filterFactory.makeFilter(firFilter, vector);
 			break;
-	}*/
+	}
 }
 
 

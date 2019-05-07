@@ -31,7 +31,7 @@
 
 extern "C" {
 	//Buffer from/to Codec1836
-	void Init_FilterDMA(void);
+	void Init_FilterDMA(void *src, void *dst);
 };
 
 #endif

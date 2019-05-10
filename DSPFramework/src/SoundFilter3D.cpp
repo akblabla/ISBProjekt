@@ -36,7 +36,6 @@ void SoundFilter3D::makeFilter(fract* filter, fractVector3d orientation){
 	for (int i = filterHeader.delay; i<FILTER_SIZE+filterHeader.delay;i++){
 		filter[i] = filterHeader.filter->filter[i];
 	}
-
 }
 
 fractVector3d SoundFilter3D::normalize(accumVector3d vector){
@@ -68,6 +67,20 @@ void SoundFilter3D::loadFilters(filterTriangle triangle){
 
 }
 filterTriangle SoundFilter3D::findFilterTriangle(fractVector3d orientation){
+/*	int triangleCount = 0;
+
+	filterTriangle* triangleArray = _filterManager.getFilterHeaders(triangleCount);
+	for (int i = 0; i<triangleCount; i++){
+		fract dotProduct[3];
+		for (int j = 0; j<3; ++i){
+			fractVector3d edge = triangleArray[i].edges[j];
+			fract dotProduct[j]=edge.x*orientation.x+edge.y*orientation.y+edge.z*orientation.z;
+		}
+		if (dotProduct[0]>0 && dotProduct[1]>0 && dotProduct[2]>0){
+			return triangleArray[i];
+		}
+	}
+	return triangleArray[0];*/
 	filterTriangle result;
 	return result;
 }

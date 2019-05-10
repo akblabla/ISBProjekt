@@ -54,84 +54,84 @@ CPP_DEPS += \
 src/AlgoTester.doj: ../src/AlgoTester.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/AlgoTester.d" -c++ -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/AlgoTester.d" -c++ -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/Algorithm.doj: ../src/Algorithm.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/Algorithm.d" -c++ -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/Algorithm.d" -c++ -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/Application.doj: ../src/Application.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/Application.d" -c++ -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/Application.d" -c++ -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/Controller.doj: ../src/Controller.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/Controller.d" -c++ -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/Controller.d" -c++ -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/FilterDMA.doj: ../src/FilterDMA.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/FilterDMA.d" -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/FilterDMA.d" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/FilterManager.doj: ../src/FilterManager.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/FilterManager.d" -c++ -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/FilterManager.d" -c++ -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/ISR.doj: ../src/ISR.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/ISR.d" -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/ISR.d" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/Process.doj: ../src/Process.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/Process.d" -c++ -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/Process.d" -c++ -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/RegisterManager.doj: ../src/RegisterManager.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/RegisterManager.d" -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/RegisterManager.d" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/SoundFilter3D.doj: ../src/SoundFilter3D.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/SoundFilter3D.d" -c++ -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/SoundFilter3D.d" -c++ -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/SpatialSoundAlgo.doj: ../src/SpatialSoundAlgo.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/SpatialSoundAlgo.d" -c++ -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/SpatialSoundAlgo.d" -c++ -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/Switch.doj: ../src/Switch.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/Switch.d" -c++ -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/Switch.d" -c++ -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

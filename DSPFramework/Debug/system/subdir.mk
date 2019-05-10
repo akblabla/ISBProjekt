@@ -17,7 +17,7 @@ C_DEPS += \
 system/adi_initialize.doj: ../system/adi_initialize.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
-	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/adi_initialize.d" -o "$@" "$<"
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-8dd7e33c8d4c685092b32299a7061b3c.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/adi_initialize.d" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

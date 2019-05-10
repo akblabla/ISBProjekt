@@ -91,7 +91,7 @@ all: DSPFramework.dxe
 DSPFramework.dxe: $(LDF_SRCS) $(SRC_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: CrossCore Blackfin Linker'
-	ccblkfn -proc ADSP-BF533 -si-revision 0.6 -TC:/Users/kaspe/Documents/GitHub/ISBprojekt/ISBProjekt/DSPFramework/system/startup_ldf/app.ldf -no-mem -map DSPFramework.map.xml -LC:/Users/kaspe/Documents/GitHub/ISBprojekt/ISBProjekt/DSPFramework/Debug/system/startup_ldf -flags-link -MDCORE0,-MDDEBUG -add-debug-libpaths -o DSPFramework.dxe @input-file.txt  -flags-link -od,.\.
+	ccblkfn -proc ADSP-BF533 -si-revision 0.6 -TC:/Users/Anders/Documents/ISB/Projekt3/CrossCore/ISBProjekt/DSPFramework/system/startup_ldf/app.ldf -no-mem -map DSPFramework.map.xml -LC:/Users/Anders/Documents/ISB/Projekt3/CrossCore/ISBProjekt/DSPFramework/Debug/system/startup_ldf -flags-link -MDCORE0,-MDDEBUG -add-debug-libpaths -o DSPFramework.dxe @input-file.txt  -flags-link -od,.\.
 	@echo 'Finished building target: $@'
 	@echo ' '
 

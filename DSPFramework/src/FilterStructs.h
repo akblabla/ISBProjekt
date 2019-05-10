@@ -1,6 +1,7 @@
 #ifndef FILTERSTRUCTS_H_
 #define FILTERSTRUCTS_H_
 #include <stdfix.h>
+#define FILTER_SIZE 256
 #define FIR_SIZE 150
 	struct fractVector3d{
 		fract x;

@@ -21,22 +21,23 @@ void SoundFilter3D::makeFilter(fract* filter, fractVector3d orientation){
 	weights = findWeights(triangle, orientation);
 	interpolateFilter(filter, readyBuffer[0], readyBuffer[1], readyBuffer[2], weights);	*/
 	if (orientation.x == 0.5){
-		for (int i = 0; i<FIR_SIZE;i++){
-			filter[i] = 0.25;
+		_filterManager.loadFilter(_filterBuffers[0], 0);
+		for (int i = 0; i<FILTER_SIZE;i++){
+			filter[i] = _filterBuffers[0][i];
 		}
 	}
 	if (orientation.y == 0.5){
-	for (int i = 0; i<FIR_SIZE;i++){
+	for (int i = 0; i<FILTER_SIZE;i++){
 			filter[i] = 0.50;
 		}
 	}
 	if (orientation.x == -0.5){
-		for (int i = 0; i<FIR_SIZE;i++){
+		for (int i = 0; i<FILTER_SIZE;i++){
 			filter[i] = 0.75;
 		}
 	}
 	if (orientation.y == -0.5){
-		for (int i = 0; i<FIR_SIZE;i++){
+		for (int i = 0; i<FILTER_SIZE;i++){
 			filter[i] = 0.99;
 		}
 	}
@@ -46,7 +47,9 @@ void SoundFilter3D::makeFilter(fract* filter, fractVector3d orientation){
 
 fractVector3d SoundFilter3D::normalize(accumVector3d vector){
 	accum squareLength = vector.x*vector.x+vector.y*vector.y+vector.z*vector.z;
-	accum inverseSquareLength = 1-(squareLength-1)*((accum) 0.5)+(squareLength-1)*(squareLength-1)*((accum) 0.5*(accum) 1.5); //2. order taylor approximation of inverse squareroot around 1
+
+	//2. order taylor approximation of inverse squareroot around 1
+	accum inverseSquareLength = 1-(squareLength-1)*((accum) 0.5)+(squareLength-1)*(squareLength-1)*((accum) 0.5*(accum) 1.5);
 	fractVector3d resultVector;
 	resultVector.x = vector.x*inverseSquareLength;
 	resultVector.y = vector.y*inverseSquareLength;
@@ -68,6 +71,7 @@ fractVector3d SoundFilter3D::findWeights(filterTriangle triangle, fractVector3d 
 	return weights;
 }
 void SoundFilter3D::loadFilters(filterTriangle triangle){
+
 }
 filterTriangle SoundFilter3D::findFilterTriangle(fractVector3d orientation){
 

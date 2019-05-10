@@ -75,5 +75,19 @@ FilterManager::FilterManager()
 
 	short FilterManager::readFile(short buffer[], short bufSize, char *fileName)
 	{
-		return 0;
+		short error = -1;
+			FILE *fp;
+			short tmp;
+
+			fp=fopen(fileName , "r");
+			if (fp)
+			{
+				for(short n=0; n < bufSize; n++) {
+					fscanf(fp, "%hd,\n", &tmp);
+					buffer[n] = tmp;
+				}
+				fclose(fp);
+				error = 0;
+			}
+			return error;
 	}

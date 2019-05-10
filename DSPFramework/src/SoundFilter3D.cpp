@@ -68,12 +68,17 @@ void SoundFilter3D::loadFilters(filterTriangle triangle){
 
 }
 filterTriangle SoundFilter3D::findFilterTriangle(fractVector3d orientation){
-
+	filterTriangle result;
+	return result;
 }
 
 filterTriangle SoundFilter3D::getFilterTriangle(int ID){
+	filterTriangle result;
+	return result;
 }
 fractVector3d SoundFilter3D::getFilterOrientationVector(int filterIDs){
+	fractVector3d result;
+	return result;
 }
 
 SoundFilter3D::~SoundFilter3D() {

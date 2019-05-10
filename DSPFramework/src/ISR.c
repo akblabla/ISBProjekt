@@ -65,11 +65,14 @@ EX_INTERRUPT_HANDLER(Timer_ISR)
 	*pFlashA_PortB_Data = ucLED;
 }
 
+static int interruptCount = 0;
+
 EX_INTERRUPT_HANDLER(Switch_ISR)
 {
 
 	if (*pFIO_FLAG_D & PF8) // SW4
 	{
+		interruptCount++;
 		*pFIO_FLAG_C = PF8;
 		PressedSwitch(KEY_SW4);
 	}

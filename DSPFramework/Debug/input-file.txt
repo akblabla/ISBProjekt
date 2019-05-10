@@ -3,6 +3,7 @@
 "src/Application.doj"
 "src/Controller.doj"
 "src/FilterDMA.doj"
+"src/FilterManager.doj"
 "src/ISR.doj"
 "src/Process.doj"
 "src/RegisterManager.doj"

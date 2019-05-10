@@ -9,6 +9,7 @@
 #define CONTROLLER__INCLUDED_
 #include <stdfix.h>
 #include "SpatialSoundAlgo.h"
+#include "FilterStructs.h"
 
 class Controller
 {
@@ -22,6 +23,7 @@ public:
 protected:
     void updateUI();
 	//short m_band;
+    accumVector3d _orientation;
 };
 
 #endif // !defined(CONTROLLER__INCLUDED_)

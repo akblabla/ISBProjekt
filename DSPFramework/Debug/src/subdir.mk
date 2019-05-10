@@ -13,6 +13,7 @@ CPP_SRCS += \
 ../src/Algorithm.cpp \
 ../src/Application.cpp \
 ../src/Controller.cpp \
+../src/FilterManager.cpp \
 ../src/Process.cpp \
 ../src/SoundFilter3D.cpp \
 ../src/SpatialSoundAlgo.cpp \
@@ -24,6 +25,7 @@ SRC_OBJS += \
 ./src/Application.doj \
 ./src/Controller.doj \
 ./src/FilterDMA.doj \
+./src/FilterManager.doj \
 ./src/ISR.doj \
 ./src/Process.doj \
 ./src/RegisterManager.doj \
@@ -41,6 +43,7 @@ CPP_DEPS += \
 ./src/Algorithm.d \
 ./src/Application.d \
 ./src/Controller.d \
+./src/FilterManager.d \
 ./src/Process.d \
 ./src/SoundFilter3D.d \
 ./src/SpatialSoundAlgo.d \
@@ -80,6 +83,13 @@ src/FilterDMA.doj: ../src/FilterDMA.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
 	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/FilterDMA.d" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/FilterManager.doj: ../src/FilterManager.cpp
+	@echo 'Building file: $<'
+	@echo 'Invoking: CrossCore Blackfin C/C++ Compiler'
+	ccblkfn -c -file-attr ProjectName="DSPFramework" -proc ADSP-BF533 -flags-compiler --no_wrap_diagnostics -si-revision 0.6 -g -DCORE0 -D_DEBUG @includes-08f473d2eee6d601053bf62206bef31a.txt -structs-do-not-overlap -no-const-strings -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "src/FilterManager.d" -c++ -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

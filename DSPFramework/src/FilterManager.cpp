@@ -17,22 +17,26 @@ FilterManager::FilterManager()
 
 	HRTFFilterHeader FilterManager::loadFilter(int id)
 	{
-		return 0;
+		struct HRTFFilterHeader filterHeader;
+		return filterHeader;
 	}
 
 	filterTriangle loadFilterTriangle(int id)
 	{
-		return 0;
+		struct filterTriangle triangle;
+		return triangle;
 	}
 
 	filterTriangle FilterManager::loadFilterTriangle(int id)
 	{
-		return 0;
+		struct filterTriangle triangle;
+		return triangle;
 	}
 
 	filterTriangle getLoadedFilterTriangle()
 	{
-		return 0;
+		struct filterTriangle triangle;
+		return triangle;
 	}
 
 	short FilterManager::readFile(short buffer[], short bufSize, char *fileName)

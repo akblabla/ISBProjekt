@@ -9,13 +9,13 @@
 #include "SoundFilter3d.h"
 #include "RegisterManager.h"
 
-SoundFilter3D filterFactory;   // create sound filter with orientation vector as parameter
-fract* _firFilter;
+SoundFilter3D _filterFactory;   // create sound filter with orientation vector as parameter
+SpatialSoundAlgo* _spatialAlgo;
+fract _filter[FIR_SIZE];
 
-
-Controller::Controller(fract* firFilter) //: m_band(0)
+Controller::Controller(SpatialSoundAlgo* spatialAlgo) //: m_band(0)
 {
-	_firFilter = firFilter;
+	_spatialAlgo = spatialAlgo;
 }
 
 Controller::~Controller()
@@ -40,25 +40,29 @@ void Controller::pressedSwitch(short sw)
 			vector.x = 0.5;
 			vector.y = 0;
 			vector.z = 0;
-			filterFactory.makeFilter(_firFilter, vector);
+			_filterFactory.makeFilter(_filter, vector);
+			_spatialAlgo->create(_filter, FIR_SIZE);
 			break;
 		case KEY_SW5:
 			vector.x = -0.5;
 			vector.y = 0;
 			vector.z = 0;
-			filterFactory.makeFilter(_firFilter, vector);
+			_filterFactory.makeFilter(_filter, vector);
+			_spatialAlgo->create(_filter, FIR_SIZE);
 			break;
 		case KEY_SW6:
 			vector.x = 0;
 			vector.y = 0.5;
 			vector.z = 0;
-			filterFactory.makeFilter(_firFilter, vector);
+			_filterFactory.makeFilter(_filter, vector);
+			_spatialAlgo->create(_filter, FIR_SIZE);
 			break;
 		case KEY_SW7:
 			vector.x = 0;
 			vector.y = -0.5;
 			vector.z = 0;
-			filterFactory.makeFilter(_firFilter, vector);
+			_filterFactory.makeFilter(_filter, vector);
+			_spatialAlgo->create(_filter, FIR_SIZE);
 			break;
 	}
 }

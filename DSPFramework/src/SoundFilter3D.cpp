@@ -20,21 +20,25 @@ void SoundFilter3D::makeFilter(fract* filter, fractVector3d orientation){
 	fractVector3d weights;
 	weights = findWeights(triangle, orientation);
 	interpolateFilter(filter, readyBuffer[0], readyBuffer[1], readyBuffer[2], weights);	*/
-	if (orientation.x == 0.5k);
-	for (int i = 0; i<FIR_SIZE;i++){
-		filter[i] = 0.25;
+	if (orientation.x == 0.5){
+		for (int i = 0; i<FIR_SIZE;i++){
+			filter[i] = 0.25;
+		}
 	}
-	if (orientation.y == 0.5k);
+	if (orientation.y == 0.5){
 	for (int i = 0; i<FIR_SIZE;i++){
 			filter[i] = 0.50;
 		}
-	if (orientation.x == -0.5k);
-	for (int i = 0; i<FIR_SIZE;i++){
+	}
+	if (orientation.x == -0.5){
+		for (int i = 0; i<FIR_SIZE;i++){
 			filter[i] = 0.75;
 		}
-	if (orientation.y == -0.5k);
-	for (int i = 0; i<FIR_SIZE;i++){
-		filter[i] = 0.99;
+	}
+	if (orientation.y == -0.5){
+		for (int i = 0; i<FIR_SIZE;i++){
+			filter[i] = 0.99;
+		}
 	}
 
 

@@ -29,8 +29,8 @@ SpatialSoundAlgo rightAlgo(firFilter);
 // Instance of dummy algorithm for left and right stereo channels
 
 // Instance of controller left and right
-Controller CtrlLeft(firFilter);
-Controller CtrlRight(firFilter);
+Controller CtrlLeft(&leftAlgo);
+Controller CtrlRight(&rightAlgo);
 
 void InitAlgoProcess(void)
 {

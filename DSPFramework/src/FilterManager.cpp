@@ -15,11 +15,24 @@ FilterManager::FilterManager()
 	{
 	}
 
-	void FilterManager::loadFilter(HRTFFilterHeader* destination,int id)
+	HRTFFilterHeader FilterManager::loadFilter(int id)
 	{
+		return 0;
 	}
-	void FilterManager::loadFilterTriangle(filterTriangle * triangle, HRTFFilterHeader* filters,int id)
+
+	filterTriangle loadFilterTriangle(int id)
 	{
+		return 0;
+	}
+
+	filterTriangle FilterManager::loadFilterTriangle(int id)
+	{
+		return 0;
+	}
+
+	filterTriangle getLoadedFilterTriangle()
+	{
+		return 0;
 	}
 
 	short FilterManager::readFile(short buffer[], short bufSize, char *fileName)

@@ -11,8 +11,7 @@
 #include "Algorithm.h"
 #include <stdfix.h>
 #include <filter.h>
-
-#define FIR_SIZE 100
+#include "FilterStructs.h"
 
 class SpatialSoundAlgo : public Algorithm {
 public:
@@ -25,7 +24,7 @@ public:
 
 	float fastInverseSquare(float input);
 	fract* _firFilter;
-	fract _delayLine[FIR_SIZE];
+	fract _delayLine[FILTER_SIZE];
 	fir_state_fx16 _filterState;
 
 };

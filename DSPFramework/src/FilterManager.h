@@ -27,6 +27,7 @@ public:
 	filterTriangle getLoadedFilterTriangle();
 private:
 	short readFile(short buffer[], short bufSize, char *fileName);
+	short readFracts(fract buffer[], short bufSize, char *fileName);
 
 	HRTFFilter filterBuffers[3][2];
 	filterTriangle loadingTriangle;

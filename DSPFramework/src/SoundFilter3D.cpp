@@ -9,7 +9,7 @@
 
 SoundFilter3D::SoundFilter3D() {
 
-
+	_filterManager.init();
 }
 
 void SoundFilter3D::makeFilter(fract* filter, fractVector3d orientation){
@@ -19,6 +19,7 @@ void SoundFilter3D::makeFilter(fract* filter, fractVector3d orientation){
 	loadFilter(*(triangle.filters[0]->filter));
 	fractVector3d weights;
 	weights = findWeights(triangle, orientation);
+
 	interpolateFilter(filter, readyBuffer[0], readyBuffer[1], readyBuffer[2], weights);	*/
 	HRTFFilterHeader filterHeader;
 	if (orientation.x == 0.5){

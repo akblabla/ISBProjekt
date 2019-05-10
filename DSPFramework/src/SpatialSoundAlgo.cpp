@@ -32,13 +32,13 @@ void SpatialSoundAlgo::create() {
 }
 
 void SpatialSoundAlgo::create(fract* filter, int length) {
-	for (int i = 0; i<FIR_SIZE || i<length; ++i){
+	for (int i = 0; i<FILTER_SIZE || i<length; ++i){
 		if (i<length){
 			_firFilter[i] =filter[i];
 		}else
 			_firFilter[i] = 0;
 	}
-	fir_init(_filterState,_firFilter,_delayLine,FIR_SIZE,0);
+	fir_init(_filterState,_firFilter,_delayLine,FILTER_SIZE,0);
 }
 
 //taken from quake 3 arena

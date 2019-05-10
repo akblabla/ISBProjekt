@@ -26,13 +26,7 @@ private:
 	
 	filterTriangle getFilterTriangle(int ID);
 	fractVector3d getFilterOrientationVector(int filterIDs);
-	
-	HRTFFilterHeader _filterBuffers[3][2];
-	filterTriangle _filterTriangles[2];
-	filterTriangle* _readyTriangle;
-	HRTFFilterHeader* _readyBuffer[3];
-	filterTriangle* _loadingTriangle;
-	HRTFFilterHeader* _loadingBuffer[3];
+
 	FilterManager _filterManager;
 };
 

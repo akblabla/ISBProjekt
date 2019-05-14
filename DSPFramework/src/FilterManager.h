@@ -25,6 +25,8 @@ public:
 	HRTFFilterHeader getLoadedFilter();
 	//returns the loaded filter triangle. Make sure that an appropiate amount of time has passed since last loadFilterTriangle call.
 	filterTriangle getLoadedFilterTriangle();
+	filterTriangle getTriangle(int id);
+	HRTFFilterHeader getHRTFHeader(int id);
 private:
 	short readFile(short buffer[], short bufSize, char *fileName);
 	short readFracts(fract buffer[], short bufSize, char *fileName);

@@ -48,11 +48,14 @@ FilterManager::FilterManager()
 				HRTFFilterArray[n].filter[i] = coefficientBuffer[n*COEFFICIENTS + i];
 
 			}
+			// initialize HRTFFilterHeaderArray
 			HRTFFilterHeaderArray[n].delay = delays[n];
 			HRTFFilterHeaderArray[n].filter = &(HRTFFilterArray[n]);
 			HRTFFilterHeaderArray[n].orientation.x = directionVectors[n*3];
 			HRTFFilterHeaderArray[n].orientation.y = directionVectors[n*3+1];
 			HRTFFilterHeaderArray[n].orientation.z = directionVectors[n*3+2];
+			// initialize filterTriangleArray.filters
+
 		}
 
 
@@ -63,22 +66,32 @@ FilterManager::FilterManager()
 		return HRTFFilterHeaderArray[id];
 	}
 
-	filterTriangle loadFilterTriangle(int id)
-	{
-		struct filterTriangle triangle;
-		return triangle;
-	}
 
 	filterTriangle FilterManager::loadFilterTriangle(int id)
 	{
-		struct filterTriangle triangle;
+		filterTriangle triangle;
 		return triangle;
 	}
 
-	filterTriangle getLoadedFilterTriangle()
+	HRTFFilterHeader FilterManager::getLoadedFilter()
 	{
-		struct filterTriangle triangle;
+		return HRTFFilterHeaderArray[0];
+	}
+
+	filterTriangle FilterManager::getLoadedFilterTriangle()
+	{
+		filterTriangle triangle;
 		return triangle;
+	}
+
+	filterTriangle FilterManager::getTriangle(int id)
+	{
+		return filterTriangleArray[id];
+	}
+
+	HRTFFilterHeader FilterManager::getHRTFHeader(int id)
+	{
+		return HRTFFilterHeaderArray[id];
 	}
 
 	short FilterManager::readFile(short buffer[], short bufSize, char *fileName)

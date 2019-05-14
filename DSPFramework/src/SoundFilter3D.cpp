@@ -34,7 +34,7 @@ void SoundFilter3D::makeFilter(fract* filter, fractVector3d orientation){
 	if (orientation.y == -0.5){
 		filterHeader = _filterManager.loadFilter(30);
 	}
-	for (int i = filterHeader.delay; i<FILTER_SIZE+filterHeader.delay;i++){
+	for (int i = filterHeader.delay; i<COEFFICIENTS+filterHeader.delay &&FILTER_SIZE;i++){
 		filter[i] = filterHeader.filter->filter[i];
 	}
 }

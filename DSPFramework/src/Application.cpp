@@ -21,9 +21,8 @@ void InitProcess(Algorithm *left, Algorithm *right);
 // Initialization of control for switch inputs
 void InitSwitch(Controller *left, Controller *right);
 
-fract firFilter[FILTER_SIZE];
-SpatialSoundAlgo leftAlgo(firFilter);
-SpatialSoundAlgo rightAlgo(firFilter);
+SpatialSoundAlgo leftAlgo;
+SpatialSoundAlgo rightAlgo;
 
 
 // Instance of dummy algorithm for left and right stereo channels

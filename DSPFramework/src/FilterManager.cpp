@@ -8,17 +8,24 @@
 #include <stdio.h>
 #include "FilterManager.h"
 
-#define FILTERS 187
-#define COEFFICIENTS 150
-#define TRIANGLES 100
+section("sdram0_bank0") fract coefficientBuffer[COEFFICIENTS*FILTERS] =
+{
+#include "impulse_responses.txt"
+};
+short delays[FILTERS] =
+{
+#include "delay.txt"
+};
+accum directionVectors[3*FILTERS] =
+{
+#include "direction_vectors.txt"
+};
 
 section("sdram0_bank0") HRTFFilter HRTFFilterArray[FILTERS];
 HRTFFilterHeader HRTFFilterHeaderArray[FILTERS];
 filterTriangle filterTriangleArray[TRIANGLES];
 
-section("sdram0_bank0") fract coefficientBuffer[FILTERS*COEFFICIENTS];
-section("sdram0_bank0") short delays[FILTERS];
-section("sdram0_bank0") fract directionVectors[3*FILTERS];
+
 
 
 FilterManager::FilterManager()
@@ -29,9 +36,9 @@ FilterManager::FilterManager()
 
 
 		// read filter coefficients, delays and direction vectors
-		short error = readFracts(coefficientBuffer,FILTERS*COEFFICIENTS,"..\\src\\impulse_responses.txt");
-		error = readFile(delays,FILTERS,"..\\src\\delay.txt");
-		error = readFracts(directionVectors,3*FILTERS,"..\\src\\direction_vectors.txt");
+		//short error = readFracts(coefficientBuffer,FILTERS*COEFFICIENTS,"..\\src\\impulse_responses.txt");
+		//error = readFile(delays,FILTERS,"..\\src\\delay.txt");
+		//error = readFracts(directionVectors,3*FILTERS,"..\\src\\direction_vectors.txt");
 
 		// sort data
 		for(short n = 0;n < FILTERS;n++)

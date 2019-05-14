@@ -49,7 +49,7 @@ void Controller::pressedSwitch(short sw)
 			vector.y = 0;
 			vector.z = 0;
 			_filterFactory.makeFilter(_filter, vector);
-			_spatialAlgo->create(_filter, FIR_SIZE);
+			_spatialAlgo->create(_filter, FILTER_SIZE);
 		}
 		break;
 		case KEY_SW5:
@@ -62,7 +62,7 @@ void Controller::pressedSwitch(short sw)
 			vector.y = 0;
 			vector.z = 0;
 			_filterFactory.makeFilter(_filter, vector);
-			_spatialAlgo->create(_filter, FIR_SIZE);
+			_spatialAlgo->create(_filter, FILTER_SIZE);
 		}
 		break;
 		case KEY_SW6:
@@ -70,14 +70,14 @@ void Controller::pressedSwitch(short sw)
 			vector.y = 0.5;
 			vector.z = 0;
 			_filterFactory.makeFilter(_filter, vector);
-			_spatialAlgo->create(_filter, FIR_SIZE);
+			_spatialAlgo->create(_filter, FILTER_SIZE);
 			break;
 		case KEY_SW7:
 			vector.x = 0;
 			vector.y = -0.5;
 			vector.z = 0;
 			_filterFactory.makeFilter(_filter, vector);
-			_spatialAlgo->create(_filter, FIR_SIZE);
+			_spatialAlgo->create(_filter, FILTER_SIZE);
 			break;
 	}
 }

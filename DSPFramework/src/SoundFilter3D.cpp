@@ -52,7 +52,7 @@ fractVector3d SoundFilter3D::normalize(accumVector3d vector){
 }
 
 void SoundFilter3D::interpolateFilter(fract* filterOut, fract*a, fract*b, fract*c, fractVector3d weights){
-	for (int i = 0; i<FIR_SIZE; i++){
+	for (int i = 0; i<COEFFICIENTS; i++){
 		filterOut[i] = a[i]*weights.x+b[i]*weights.y+c[i]*weights.z;
 	}
 }

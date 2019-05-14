@@ -28,7 +28,7 @@ void SpatialSoundAlgo::process(short* input, short* output, short len) {
 }
 
 void SpatialSoundAlgo::create() {
-	fir_init(_filterState,_firFilter,_delayLine,FIR_SIZE,0);
+	fir_init(_filterState,_firFilter,_delayLine,FILTER_SIZE,0);
 }
 
 void SpatialSoundAlgo::create(fract* filter, int length) {

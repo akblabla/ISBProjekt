@@ -25,7 +25,7 @@ struct HRTFFilterHeader{
 	HRTFFilter* filter;
 };
 struct filterTriangle{
-	HRTFFilterHeader* filters[3];
+	int filterIDs[3];
 	fractVector3d edges[3];
 	accum projectionMatrix[3][3];
 };

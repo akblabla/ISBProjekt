@@ -4,7 +4,7 @@
 #define FILTER_SIZE 256
 #define COEFFICIENTS 150
 #define FILTERS 187
-#define TRIANGLES 100
+#define TRIANGLES 370
 
 struct fractVector3d{
 	fract x;
@@ -26,7 +26,7 @@ struct HRTFFilterHeader{
 };
 struct filterTriangle{
 	int filterIDs[3];
-	fractVector3d edges[3];
+	accumVector3d edges[3];
 	accum projectionMatrix[3][3];
 };
 

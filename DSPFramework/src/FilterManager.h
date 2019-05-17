@@ -9,6 +9,7 @@
 #define FILTERMANAGER_H_
 #include "Algorithm.h"
 #include "FilterStructs.h"
+#include "FilterDMA.h"
 
 class FilterManager {
 public:
@@ -35,6 +36,7 @@ private:
 	filterTriangle loadingTriangle;
 	HRTFFilterHeader loadingFilter[3];
 	DMADestriptor srcDMADescriptors[5];
+	DMADestriptor destDMADescriptors[5];
 };
 
 #endif /* FILTERMANAGER_H_ */

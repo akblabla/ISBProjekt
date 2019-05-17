@@ -10,22 +10,24 @@
 #include <stdfix.h>
 #include "FilterStructs.h"
 #include "FilterManager.h"
+#include <math.h>
 class SoundFilter3D {
 public:
 	SoundFilter3D();
 	virtual ~SoundFilter3D();
-	void makeFilter(fract* filter, fractVector3d orientation);
+	void makeFilters(fract* leftFilter, fract* rightFilter, fractVector3d orientation);
 
 private:
 	
 	fractVector3d normalize(accumVector3d vector);
-	void interpolateFilter(fract* filterOut, fract*a, fract*b, fract*c, fractVector3d weights);
+	accum inverseSquareRoot2ndTaylor(accum x);
+	fract SquareRootApprox(fract x);
+
+	void makeFilter(fract* filter, fractVector3d orientation);
+	void interpolateFilter(fract* filterOut, filterTriangle triangle, fractVector3d weights);
 	fractVector3d findWeights(filterTriangle triangle, fractVector3d orientation);
 	void loadFilters(filterTriangle triangle);
-	filterTriangle findFilterTriangle(fractVector3d orientation);
-	
-	filterTriangle getFilterTriangle(int ID);
-	fractVector3d getFilterOrientationVector(int filterIDs);
+	int findFilterTriangle(fractVector3d orientation);
 
 	FilterManager _filterManager;
 };

@@ -27,11 +27,21 @@
 #include <cdefBF533.h>
 
 #define FILTER_SIZE		16
-
+typedef struct {
+	DMADestriptor *pNext;
+	void *pStart;
+	short dConfig;
+	short dXCount;
+	short dXModify;
+	short dYCount;
+	short dYModify;
+} DMADestriptor;
 
 extern "C" {
 	//Buffer from/to Codec1836
-	void Init_FilterDMA(void *src, void *dst);
+	DMADestriptor makeDMADescriptor(void *addr, DMADestriptor* nextDesc, bool write, bool end)
+	void startFilterDMA(void *src, void *dst, DMADestriptor* nextSrcDesc, DMADestriptor* nextDstDesc);
+	void startFilterDMASingle(void *src, void *dst);
 };
 
 #endif

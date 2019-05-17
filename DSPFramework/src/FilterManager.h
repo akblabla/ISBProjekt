@@ -17,12 +17,12 @@ public:
 	/*starts loading the filter with the given id and returns the previous loaded filter.
 	 Make sure that an appropiate amount of time has passed since last loadFilter call, otherwise the returned pointer won't point to valid data.*/
 	HRTFFilterHeader loadFilter(int id);
-	/*starts loading the filter triangle with the given id and returns the previous loaded filter triangle.
-	 *Make sure that an appropiate amount of time has passed since last loadFilterTriangle call.
+	/*starts loading the filter triangles with the given ids and returns the previous loaded filter triangles.
+	 *Make sure that an appropiate amount of time has passed since last loadFilterTriangles call.
 	*/
-	filterTriangle loadFilterTriangle(int id);
+	void loadFilterTriangles(filterTriangle* triangleA, int idA, filterTriangle* triangleB, int idB)
 	//returns the loaded filter. Make sure that an appropiate amount of time has passed since last loadFilter call.
-	HRTFFilterHeader getLoadedFilter();
+	const HRTFFilter* getLoadedFilters();
 	//returns the loaded filter triangle. Make sure that an appropiate amount of time has passed since last loadFilterTriangle call.
 	filterTriangle getLoadedFilterTriangle();
 	filterTriangle getTriangle(int id);
@@ -34,7 +34,7 @@ private:
 	HRTFFilter filterBuffers[3][2];
 	filterTriangle loadingTriangle;
 	HRTFFilterHeader loadingFilter[3];
-
+	DMADestriptor srcDMADescriptors[5];
 };
 
 #endif /* FILTERMANAGER_H_ */

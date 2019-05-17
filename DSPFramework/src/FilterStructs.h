@@ -12,21 +12,27 @@ struct fractVector3d{
 	fract z;
 };
 struct HRTFFilter{
-	fract filter[COEFFICIENTS];
+	fract coefficients[COEFFICIENTS];
 };
 struct accumVector3d{
 	accum x;
+	#pragma align
 	accum y;
+	#pragma align
 	accum z;
 };
 struct HRTFFilterHeader{
-	accumVector3d orientation;
+	fractVector3d orientation;
+	#pragma align
 	int delay;
+	#pragma align
 	HRTFFilter* filter;
 };
 struct filterTriangle{
 	int filterIDs[3];
+	#pragma align
 	fractVector3d edges[3];
+	#pragma align
 	accum projectionMatrix[3][3];
 };
 

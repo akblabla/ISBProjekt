@@ -45,7 +45,7 @@ FilterManager::FilterManager()
 		{
 			for(short i = 0;i < COEFFICIENTS;i++)
 			{
-				HRTFFilterArray[n].filter[i] = coefficientBuffer[n*COEFFICIENTS + i];
+				HRTFFilterArray[n].coefficients[i] = coefficientBuffer[n*COEFFICIENTS + i];
 
 			}
 			// initialize HRTFFilterHeaderArray
@@ -67,15 +67,17 @@ FilterManager::FilterManager()
 	}
 
 
-	filterTriangle FilterManager::loadFilterTriangle(int id)
+	void FilterManager::loadFilterTriangles(filterTriangle* triangleA, int idA, filterTriangle* triangleB, int idB)
 	{
+		makeDMADescriptor(void *addr, DMADestriptor* nextDesc, bool write, bool end)
+
 		filterTriangle triangle;
 		return triangle;
 	}
 
-	HRTFFilterHeader FilterManager::getLoadedFilter()
+	const HRTFFilter* FilterManager::getLoadedFilters()
 	{
-		return HRTFFilterHeaderArray[0];
+		return HRTFFilterArray;
 	}
 
 	filterTriangle FilterManager::getLoadedFilterTriangle()

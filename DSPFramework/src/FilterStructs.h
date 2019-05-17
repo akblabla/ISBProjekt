@@ -4,7 +4,7 @@
 #define FILTER_SIZE 256
 #define COEFFICIENTS 150
 #define FILTERS 187
-#define TRIANGLES 100
+#define TRIANGLES 370
 
 struct fractVector3d{
 	fract x;

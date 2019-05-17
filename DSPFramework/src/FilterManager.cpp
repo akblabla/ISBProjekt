@@ -20,6 +20,10 @@ accum directionVectors[3*FILTERS] =
 {
 #include "direction_vectors.txt"
 };
+accum triangleData[21*TRIANGLES] =
+{
+#include "filterTriangle.txt"
+};
 
 section("sdram0_bank0") HRTFFilter HRTFFilterArray[FILTERS];
 HRTFFilterHeader HRTFFilterHeaderArray[FILTERS];
@@ -54,10 +58,26 @@ FilterManager::FilterManager()
 			HRTFFilterHeaderArray[n].orientation.x = directionVectors[n*3];
 			HRTFFilterHeaderArray[n].orientation.y = directionVectors[n*3+1];
 			HRTFFilterHeaderArray[n].orientation.z = directionVectors[n*3+2];
-			// initialize filterTriangleArray.filters
+
 
 		}
 
+		// initialize filterTriangleArray
+		for(short n = 0;n < TRIANGLES;n++)
+		{
+			for(short i = 0; i < 3; i++ )
+			{
+				filterTriangleArray[n].filterIDs[i] = triangleData[n*21 + i];
+				filterTriangleArray[n].edges[i].x = triangleData[n*21 + 3*(i+1)];
+				filterTriangleArray[n].edges[i].y = triangleData[n*21 + 3*(i+1) + 1];
+				filterTriangleArray[n].edges[i].z = triangleData[n*21 + 3*(i+1) + 2];
+				for(short m = 0;m < 3; m++ )
+				{
+					filterTriangleArray[n].projectionMatrix[i][m] = triangleData[n*21 + 12 + m + 3*i];
+				}
+
+			}
+		}
 
 	}
 

@@ -12,16 +12,14 @@ SoundFilter3D::SoundFilter3D() {
 	_filterManager.init();
 }
 
-void SoundFilter3D::makeFilter(fract* filter, fractVector3d orientation){
+void SoundFilter3D::makeFilters(fract* filterLeft, fract* filterRight, fractVector3d orientation){
 
 	int triangleID;
 	triangleID = findFilterTriangle(orientation);
-	filterTriangle loadedTriangle = _filterManager.loadFilterTriangle(triangleID);
 	fractVector3d weights;
 	weights = findWeights(_filterManager.getTriangle(triangleID), orientation);
 
 	const HRTFFilter* filterArray= _filterManager.getLoadedFilters();
-	interpolateFilter(filter, loadedTriangle, weights);
 /*	HRTFFilterHeader filterHeader;
 	if (orientation.x == 0.5){
 		filterHeader = _filterManager.loadFilter(0);
@@ -65,7 +63,7 @@ void SoundFilter3D::interpolateFilter(fract* filterOut, filterTriangle triangle,
 	int delay = 0;
 	HRTFFilterHeader headers[3];
 	for (int i = 0; i<2;++i){
-		headers[i] = _filterManager.getHRTFHeader(triangle.filterIDs[0])
+		headers[i] = _filterManager.getHRTFHeader(triangle.filterIDs[0]);
 		delay+=headers[i].delay;
 	}
 	delay/=3;

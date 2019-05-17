@@ -26,9 +26,8 @@
 #include <sys\exception.h>
 #include <cdefBF533.h>
 
-#define FILTER_SIZE		16
 typedef struct {
-	DMADestriptor *pNext;
+	void *pNext;
 	void *pStart;
 	short dConfig;
 	short dXCount;
@@ -39,7 +38,7 @@ typedef struct {
 
 extern "C" {
 	//Buffer from/to Codec1836
-	DMADestriptor makeDMADescriptor(void *addr, DMADestriptor* nextDesc, bool write, bool end)
+	DMADestriptor makeDMADescriptor(void *addr, DMADestriptor* nextDesc, bool write, bool end);
 	void startFilterDMA(void *src, void *dst, DMADestriptor* nextSrcDesc, DMADestriptor* nextDstDesc);
 	void startFilterDMASingle(void *src, void *dst);
 };

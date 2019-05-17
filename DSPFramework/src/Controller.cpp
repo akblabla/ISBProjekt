@@ -11,7 +11,8 @@
 
 SoundFilter3D _filterFactory;   // create sound filter with orientation vector as parameter
 SpatialSoundAlgo* _spatialAlgo;
-fract _filter[FILTER_SIZE];
+fract _filterLeft[FILTER_SIZE];
+fract _filterRight[FILTER_SIZE];
 
 Controller::Controller(SpatialSoundAlgo* spatialAlgo) //: m_band(0)
 {
@@ -41,43 +42,43 @@ void Controller::pressedSwitch(short sw)
 	switch (sw) {
 		case KEY_SW4:
 		{
-			accumVector3d result = _orientation;
+			fractVector3d result = _orientation;
 			result.x = _orientation.x*cos15 - _orientation.y*sin15;
 			result.y = _orientation.x*sin15 + _orientation.y*cos15;
 			_orientation = result;
 			vector.x = 0.5;
 			vector.y = 0;
 			vector.z = 0;
-			_filterFactory.makeFilter(_filter, vector);
-			_spatialAlgo->create(_filter, FILTER_SIZE);
+			_filterFactory.makeFilters(_filterLeft, _filterRight, _orientation);
+			_spatialAlgo->create(_filterLeft, FILTER_SIZE);
 		}
 		break;
 		case KEY_SW5:
 		{
-			accumVector3d result = _orientation;
+			fractVector3d result = _orientation;
 			result.x = _orientation.x*cos15 + _orientation.y*sin15;
 			result.y = -_orientation.x*sin15 + _orientation.y*cos15;
 			_orientation = result;
 			vector.x = -0.5;
 			vector.y = 0;
 			vector.z = 0;
-			_filterFactory.makeFilter(_filter, vector);
-			_spatialAlgo->create(_filter, FILTER_SIZE);
+			_filterFactory.makeFilters(_filterLeft, _filterRight, _orientation);
+			_spatialAlgo->create(_filterLeft, FILTER_SIZE);
 		}
 		break;
 		case KEY_SW6:
 			vector.x = 0;
 			vector.y = 0.5;
 			vector.z = 0;
-			_filterFactory.makeFilter(_filter, vector);
-			_spatialAlgo->create(_filter, FILTER_SIZE);
+			_filterFactory.makeFilters(_filterLeft, _filterRight, _orientation);
+			_spatialAlgo->create(_filterLeft, FILTER_SIZE);
 			break;
 		case KEY_SW7:
 			vector.x = 0;
 			vector.y = -0.5;
 			vector.z = 0;
-			_filterFactory.makeFilter(_filter, vector);
-			_spatialAlgo->create(_filter, FILTER_SIZE);
+			_filterFactory.makeFilters(_filterLeft, _filterRight, _orientation);
+			_spatialAlgo->create(_filterLeft, FILTER_SIZE);
 			break;
 	}
 }

@@ -16,23 +16,23 @@ struct HRTFFilter{
 };
 struct accumVector3d{
 	accum x;
-	#pragma align
+	#pragma align(4)
 	accum y;
-	#pragma align
+	#pragma align(4)
 	accum z;
 };
 struct HRTFFilterHeader{
 	fractVector3d orientation;
-	#pragma align
+	#pragma align(4)
 	int delay;
-	#pragma align
+	#pragma align(4)
 	HRTFFilter* filter;
 };
 struct filterTriangle{
 	int filterIDs[3];
-	#pragma align
+	#pragma align(4)
 	fractVector3d edges[3];
-	#pragma align
+	#pragma align(4)
 	accum projectionMatrix[3][3];
 };
 

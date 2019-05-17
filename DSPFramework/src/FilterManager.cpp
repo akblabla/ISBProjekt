@@ -89,10 +89,7 @@ FilterManager::FilterManager()
 
 	void FilterManager::loadFilterTriangles(filterTriangle* triangleA, int idA, filterTriangle* triangleB, int idB)
 	{
-		makeDMADescriptor(void *addr, DMADestriptor* nextDesc, bool write, bool end)
-
-		filterTriangle triangle;
-		return triangle;
+//		makeDMADescriptor(void *addr, DMADestriptor* nextDesc, bool write, bool end);
 	}
 
 	const HRTFFilter* FilterManager::getLoadedFilters()

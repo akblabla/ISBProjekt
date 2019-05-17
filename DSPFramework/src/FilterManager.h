@@ -21,7 +21,7 @@ public:
 	/*starts loading the filter triangles with the given ids and returns the previous loaded filter triangles.
 	 *Make sure that an appropiate amount of time has passed since last loadFilterTriangles call.
 	*/
-	void loadFilterTriangles(filterTriangle* triangleA, int idA, filterTriangle* triangleB, int idB)
+	void loadFilterTriangles(filterTriangle* triangleA, int idA, filterTriangle* triangleB, int idB);
 	//returns the loaded filter. Make sure that an appropiate amount of time has passed since last loadFilter call.
 	const HRTFFilter* getLoadedFilters();
 	//returns the loaded filter triangle. Make sure that an appropiate amount of time has passed since last loadFilterTriangle call.

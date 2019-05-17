@@ -23,7 +23,7 @@ public:
 protected:
     void updateUI();
 	//short m_band;
-    accumVector3d _orientation;
+    fractVector3d _orientation;
 };
 
 #endif // !defined(CONTROLLER__INCLUDED_)

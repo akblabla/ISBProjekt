@@ -16,7 +16,7 @@ class Controller
 
 public:
 
-	Controller::Controller(SpatialSoundAlgo* spatialAlgo);
+	Controller::Controller(SpatialSoundAlgo* spatialAlgoLeft, SpatialSoundAlgo* spatialAlgoRight);
 	virtual ~Controller();
 	void pressedSwitch(short sw);
 

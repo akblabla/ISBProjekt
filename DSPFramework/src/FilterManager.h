@@ -21,7 +21,7 @@ public:
 	/*starts loading the filter triangles with the given ids and returns the previous loaded filter triangles.
 	 *Make sure that an appropiate amount of time has passed since last loadFilterTriangles call.
 	*/
-	void loadFilterTriangles(filterTriangle* triangleA, int idA, filterTriangle* triangleB, int idB);
+	void loadFilterTriangles(HRTFFilter* filtersA, int* triangleIDA, HRTFFilter* filtersB, int* triangleIDB);
 	//returns the loaded filter. Make sure that an appropiate amount of time has passed since last loadFilter call.
 	const HRTFFilter* getLoadedFilters();
 	//returns the loaded filter triangle. Make sure that an appropiate amount of time has passed since last loadFilterTriangle call.
@@ -32,11 +32,7 @@ private:
 	short readFile(short buffer[], short bufSize, char *fileName);
 	short readFracts(fract buffer[], short bufSize, char *fileName);
 
-	HRTFFilter filterBuffers[3][2];
-	filterTriangle loadingTriangle;
-	HRTFFilterHeader loadingFilter[3];
-	DMADestriptor srcDMADescriptors[5];
-	DMADestriptor destDMADescriptors[5];
+
 };
 
 #endif /* FILTERMANAGER_H_ */

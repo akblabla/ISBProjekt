@@ -19,7 +19,7 @@
 // Initialization of sample block processing inputs
 void InitProcess(Algorithm *left, Algorithm *right);
 // Initialization of control for switch inputs
-void InitSwitch(Controller *left, Controller *right);
+void InitSwitch(Controller *ctrl);
 
 SpatialSoundAlgo leftAlgo;
 SpatialSoundAlgo rightAlgo;
@@ -28,14 +28,13 @@ SpatialSoundAlgo rightAlgo;
 // Instance of dummy algorithm for left and right stereo channels
 
 // Instance of controller left and right
-Controller CtrlLeft(&leftAlgo);
-Controller CtrlRight(&rightAlgo);
+Controller Ctrl(&leftAlgo,&rightAlgo);
 
 void InitAlgoProcess(void)
 {
 	leftAlgo.create();
 	rightAlgo.create();
-	InitSwitch(&CtrlLeft, &CtrlRight);
+	InitSwitch(&Ctrl);
 }
 
 void InitSystemHardware(void)

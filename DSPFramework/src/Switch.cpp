@@ -7,21 +7,18 @@
 #include "Controller.h"
 
 // Controller reference
-Controller *pCtrlRight;
-Controller *pCtrlLeft;
+Controller *pCtrl;
 
-void InitSwitch(Controller *left, Controller *right)
+void InitSwitch(Controller *ctrl)
 {
-	pCtrlLeft = left;
-	pCtrlRight = right;
+	pCtrl = ctrl;
 }
 
 extern "C" {
 
     void PressedSwitch(short sw)
     {
-    	pCtrlLeft->pressedSwitch(sw);
-    	pCtrlRight->pressedSwitch(sw);
+    	pCtrl->pressedSwitch(sw);
     }
 
 }

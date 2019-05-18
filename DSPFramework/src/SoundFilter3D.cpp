@@ -15,27 +15,27 @@ SoundFilter3D::SoundFilter3D() {
 void SoundFilter3D::makeFilters(fract* filterLeft, fract* filterRight, fractVector3d orientation){
 
 	int triangleID;
+	int mirrorTriangleID;
+	fractVector3d mirrorOrientation = orientation;
+	mirrorOrientation.y *= -1;
 	triangleID = findFilterTriangle(orientation);
-	fractVector3d weights;
-	weights = findWeights(_filterManager.getTriangle(triangleID), orientation);
+	mirrorTriangleID = findFilterTriangle(mirrorOrientation);
+	filterTriangle triangle = _filterManager.getTriangle(triangleID);
+	filterTriangle mirrorTriangle = _filterManager.getTriangle(mirrorTriangleID);
+	int loadedTriangleID = triangleID;
+	int mirrorLoadedTriangleID = mirrorTriangleID ;
+	HRTFFilter filters[3];
+	HRTFFilter mirrorFilters[3];
+	_filterManager.loadFilterTriangles(filters, &loadedTriangleID, mirrorFilters, &mirrorLoadedTriangleID);
+	filterTriangle loadedTriangle = _filterManager.getTriangle(loadedTriangleID);
+	filterTriangle loadedMirrorTriangle = _filterManager.getTriangle(mirrorLoadedTriangleID);
 
-	const HRTFFilter* filterArray= _filterManager.getLoadedFilters();
-/*	HRTFFilterHeader filterHeader;
-	if (orientation.x == 0.5){
-		filterHeader = _filterManager.loadFilter(0);
-	}
-	if (orientation.y == 0.5){
-		filterHeader = _filterManager.loadFilter(10);
-	}
-	if (orientation.x == -0.5){
-		filterHeader = _filterManager.loadFilter(20);
-	}
-	if (orientation.y == -0.5){
-		filterHeader = _filterManager.loadFilter(30);
-	}
-	for (int i = filterHeader.delay; i<COEFFICIENTS+filterHeader.delay &&FILTER_SIZE;i++){
-		filter[i] = filterHeader.filter->filter[i];
-	}*/
+	fractVector3d weights;
+	fractVector3d mirrorWeights;
+	weights = findWeights(loadedTriangle, orientation);
+	mirrorWeights = findWeights(loadedMirrorTriangle, mirrorOrientation);
+	interpolateFilter(filterLeft, loadedTriangle, filters, weights);
+	interpolateFilter(filterRight, loadedMirrorTriangle, mirrorFilters, mirrorWeights);
 }
 
 //2. order taylor approximation of inverse squareroot around 1
@@ -59,11 +59,11 @@ fractVector3d SoundFilter3D::normalize(accumVector3d vector){
 	return resultVector;
 }
 
-void SoundFilter3D::interpolateFilter(fract* filterOut, filterTriangle triangle, fractVector3d weights ){
+void SoundFilter3D::interpolateFilter(fract* filterOut, filterTriangle triangle, HRTFFilter* inputFilters, fractVector3d weights ){
 	int delay = 0;
 	HRTFFilterHeader headers[3];
-	for (int i = 0; i<2;++i){
-		headers[i] = _filterManager.getHRTFHeader(triangle.filterIDs[0]);
+	for (int i = 0; i<3;++i){
+		headers[i] = _filterManager.getHRTFHeader(triangle.filterIDs[i]);
 		delay+=headers[i].delay;
 	}
 	delay/=3;
@@ -75,9 +75,9 @@ void SoundFilter3D::interpolateFilter(fract* filterOut, filterTriangle triangle,
 		filterOut[i] = 0;
 	}
 	for (int i = 0; (i<COEFFICIENTS)&&(i+delay<FILTER_SIZE); i++){
-		filterOut[i+delay] = headers[0].filter->coefficients[i]*weights.x
-				+headers[1].filter->coefficients[i]*weights.y
-				+headers[2].filter->coefficients[i]*weights.z;
+		filterOut[i+delay] = inputFilters[0].coefficients[i]*weights.x
+				+inputFilters[1].coefficients[i]*weights.y
+				+inputFilters[2].coefficients[i]*weights.z;
 	}
 }
 fractVector3d SoundFilter3D::findWeights(filterTriangle triangle, fractVector3d orientation){
@@ -92,17 +92,15 @@ void SoundFilter3D::loadFilters(filterTriangle triangle){
 
 }
 int SoundFilter3D::findFilterTriangle(fractVector3d orientation){
-	int triangleCount = 0;
-
 	filterTriangle triangle;
-	for (int i = 0; i<triangleCount; i++){
+	for (int i = 0; i<TRIANGLES; i++){
 		triangle = _filterManager.getTriangle(i);
 		accum dotProduct[3];
-		for (int j = 0; j<3; ++i){
+		for (int j = 0; j<3; ++j){
 			fractVector3d edge = triangle.edges[j];
 			dotProduct[j]=(accum)(edge.x*orientation.x)+(accum)(edge.y*orientation.y)+(accum)(edge.z*orientation.z);
 		}
-		if (dotProduct[0]>0 && dotProduct[1]>0 && dotProduct[2]>0){
+		if (dotProduct[0]>=0 && dotProduct[1]>=0 && dotProduct[2]>=0){
 			return i;
 		}
 	}

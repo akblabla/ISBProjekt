@@ -23,7 +23,7 @@ private:
 	accum inverseSquareRoot2ndTaylor(accum x);
 	fract SquareRootApprox(fract x);
 
-	void interpolateFilter(fract* filterOut, filterTriangle triangle, fractVector3d weights);
+	void interpolateFilter(fract* filterOut, filterTriangle triangle, HRTFFilter* inputFilters, fractVector3d weights);
 	fractVector3d findWeights(filterTriangle triangle, fractVector3d orientation);
 	void loadFilters(filterTriangle triangle);
 	int findFilterTriangle(fractVector3d orientation);

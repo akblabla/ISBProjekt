@@ -8,18 +8,21 @@
 #include "Controller.h"
 #include "SoundFilter3d.h"
 #include "RegisterManager.h"
+#include <math.h>
 
 SoundFilter3D _filterFactory;   // create sound filter with orientation vector as parameter
-SpatialSoundAlgo* _spatialAlgo;
+SpatialSoundAlgo* _spatialAlgoLeft;
+SpatialSoundAlgo* _spatialAlgoRight;
 fract _filterLeft[FILTER_SIZE];
 fract _filterRight[FILTER_SIZE];
-
-Controller::Controller(SpatialSoundAlgo* spatialAlgo) //: m_band(0)
+float _pitch;
+float _azim;
+Controller::Controller(SpatialSoundAlgo* spatialAlgoLeft,SpatialSoundAlgo* spatialAlgoRight) //: m_band(0)
 {
-	_spatialAlgo = spatialAlgo;
-	_orientation.x = 1;
-	_orientation.y = 0;
-	_orientation.z = 0;
+	_spatialAlgoLeft = spatialAlgoLeft;
+	_spatialAlgoRight = spatialAlgoRight;
+	_pitch = 0;
+	_azim = 0;
 }
 
 Controller::~Controller()
@@ -42,43 +45,43 @@ void Controller::pressedSwitch(short sw)
 	switch (sw) {
 		case KEY_SW4:
 		{
-			fractVector3d result = _orientation;
-			result.x = _orientation.x*cos15 - _orientation.y*sin15;
-			result.y = _orientation.x*sin15 + _orientation.y*cos15;
-			_orientation = result;
-			vector.x = 0.5;
-			vector.y = 0;
-			vector.z = 0;
-			_filterFactory.makeFilters(_filterLeft, _filterRight, _orientation);
-			_spatialAlgo->create(_filterLeft, FILTER_SIZE);
+			_azim -= 15;
+			vector.x = sind(_azim)*cosd(_pitch);
+			vector.y = cosd(_azim)*cosd(_pitch);
+			vector.z = sind(_pitch);
+			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
+			_spatialAlgoLeft->modifyFilter(_filterLeft, FILTER_SIZE);
+			_spatialAlgoRight->modifyFilter(_filterRight, FILTER_SIZE);
 		}
 		break;
 		case KEY_SW5:
 		{
-			fractVector3d result = _orientation;
-			result.x = _orientation.x*cos15 + _orientation.y*sin15;
-			result.y = -_orientation.x*sin15 + _orientation.y*cos15;
-			_orientation = result;
-			vector.x = -0.5;
-			vector.y = 0;
-			vector.z = 0;
-			_filterFactory.makeFilters(_filterLeft, _filterRight, _orientation);
-			_spatialAlgo->create(_filterLeft, FILTER_SIZE);
+			_azim += 15;
+			vector.x = sind(_azim)*cosd(_pitch);
+			vector.y = cosd(_azim)*cosd(_pitch);
+			vector.z = sind(_pitch);
+			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
+			_spatialAlgoLeft->modifyFilter(_filterLeft, FILTER_SIZE);
+			_spatialAlgoRight->modifyFilter(_filterRight, FILTER_SIZE);
 		}
 		break;
 		case KEY_SW6:
-			vector.x = 0;
-			vector.y = 0.5;
-			vector.z = 0;
-			_filterFactory.makeFilters(_filterLeft, _filterRight, _orientation);
-			_spatialAlgo->create(_filterLeft, FILTER_SIZE);
+			_pitch -= 15;
+			vector.x = sind(_azim)*cosd(_pitch);
+			vector.y = cosd(_azim)*cosd(_pitch);
+			vector.z = sind(_pitch);
+			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
+			_spatialAlgoLeft->modifyFilter(_filterLeft, FILTER_SIZE);
+			_spatialAlgoRight->modifyFilter(_filterRight, FILTER_SIZE);
 			break;
 		case KEY_SW7:
-			vector.x = 0;
-			vector.y = -0.5;
-			vector.z = 0;
-			_filterFactory.makeFilters(_filterLeft, _filterRight, _orientation);
-			_spatialAlgo->create(_filterLeft, FILTER_SIZE);
+			_pitch += 15;
+			vector.x = sind(_azim)*cosd(_pitch);
+			vector.y = cosd(_azim)*cosd(_pitch);
+			vector.z = sind(_pitch);
+			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
+			_spatialAlgoLeft->modifyFilter(_filterLeft, FILTER_SIZE);
+			_spatialAlgoRight->modifyFilter(_filterRight, FILTER_SIZE);
 			break;
 	}
 }

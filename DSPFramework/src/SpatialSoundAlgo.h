@@ -21,11 +21,16 @@ public:
 	virtual void process(short* input, short* output, short len);
 	virtual void create();
 	virtual void create(fract* filter, int length);
+	virtual void modifyFilter(fract* filter, int length);
 
 	float fastInverseSquare(float input);
 	fract _firFilter[FILTER_SIZE];
 	fract _delayLine[FILTER_SIZE];
 	fir_state_fx16 _filterState;
+
+	fract _firFilterTemp[FILTER_SIZE];
+	fir_state_fx16 _filterStateTemp;
+	bool _changedFilter;
 
 };
 

@@ -6,7 +6,7 @@
  */
 
 #include "FilterDMA.h"
-
+#define COEFFICIENTS 150
 DMADestriptor makeDMADescriptor(void *addr, DMADestriptor* nextDesc, bool write, bool end)
 {
 	DMADestriptor desc;
@@ -18,7 +18,7 @@ DMADestriptor makeDMADescriptor(void *addr, DMADestriptor* nextDesc, bool write,
 	desc.pStart = addr;
 	desc.dXModify = 0x4;
 	desc.dYModify = 0x0;
-	desc.dXCount = 0x0;
+	desc.dXCount = COEFFICIENTS;
 	desc.dYCount = 0x0;
 	desc.dConfig = 0x0;
 
@@ -46,11 +46,13 @@ void startFilterDMA(void *src, void *dst, DMADestriptor* nextSrcDesc, DMADestrip
     *pMDMA_S0_NEXT_DESC_PTR = nextSrcDesc;
     *pMDMA_S0_START_ADDR = src;
     *pMDMA_S0_X_MODIFY = 0x4;
+    *pMDMA_S0_X_COUNT = COEFFICIENTS;
 
     // configure MemDMA0 Destination Descriptor block in memory
     *pMDMA_D0_NEXT_DESC_PTR = nextDstDesc;
     *pMDMA_D0_START_ADDR = dst;
     *pMDMA_D0_X_MODIFY =0x4;
+    *pMDMA_D0_X_COUNT = COEFFICIENTS;
 
 	// enable MemDMA0 transfers
 	// Stop mode and no interrupt enable required.
@@ -72,11 +74,13 @@ void startFilterDMASingle(void *src, void *dst)
 	// configure MemDMA0 Source Descriptor block in memory
     *pMDMA_S0_START_ADDR = src;
     *pMDMA_S0_X_MODIFY = 0x4;
+    *pMDMA_S0_X_COUNT = COEFFICIENTS;
 
     // configure MemDMA0 Destination Descriptor block in memory
     *pMDMA_D0_START_ADDR = dst;
 
     *pMDMA_D0_X_MODIFY =0x4;
+    *pMDMA_D0_X_COUNT = COEFFICIENTS;
 
 	unsigned short WDSIZESetting = 0x8; //32 bit transfer
 

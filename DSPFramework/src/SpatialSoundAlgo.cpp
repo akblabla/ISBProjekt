@@ -9,6 +9,7 @@
 
 
 SpatialSoundAlgo::SpatialSoundAlgo() {
+	fir_init(_filterState,_firFilter,_delayLine,FILTER_SIZE,0);
 }
 float y = 0;
 SpatialSoundAlgo::~SpatialSoundAlgo() {
@@ -16,6 +17,12 @@ SpatialSoundAlgo::~SpatialSoundAlgo() {
 }
 
 void SpatialSoundAlgo::process(short* input, short* output, short len) {
+	if (_changedFilter){
+		for (int i = 0; i<FILTER_SIZE;++i){
+			_firFilter[i] =_firFilterTemp[i];
+		}
+		_changedFilter = false;
+	}
 	// convolve
 	//void convolve_fr32(const fract32 input_x[], int length_x, const fract32 input_y[], int length_y, fract32 output[]);
 	fract* inputFract = (fract*) input;
@@ -38,6 +45,18 @@ void SpatialSoundAlgo::create(fract* filter, int length) {
 			_firFilter[i] = 0;
 	}
 	fir_init(_filterState,_firFilter,_delayLine,FILTER_SIZE,0);
+}
+
+void SpatialSoundAlgo::modifyFilter(fract* filter, int length) {
+	for (int i = 0; i<FILTER_SIZE;
+			++i){
+		if (i<length){
+			_firFilterTemp[i] =filter[i];
+		}else
+			_firFilterTemp[i] = 0;
+	}
+	fir_init(_filterStateTemp,_firFilterTemp,_delayLine,FILTER_SIZE,0);
+	_changedFilter = true;
 }
 
 //taken from quake 3 arena

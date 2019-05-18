@@ -25,6 +25,8 @@
 //#define _USE_LEGACY_CDEF_BEHAVIOUR
 #include <sys\exception.h>
 #include <cdefBF533.h>
+//#include "FilterStructs.h"
+
 
 typedef struct {
 	void *pNext;

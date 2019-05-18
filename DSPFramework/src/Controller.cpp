@@ -50,8 +50,6 @@ void Controller::pressedSwitch(short sw)
 			vector.y = cosd(_azim)*cosd(_pitch);
 			vector.z = sind(_pitch);
 			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
-			_spatialAlgoLeft->modifyFilter(_filterLeft, FILTER_SIZE);
-			_spatialAlgoRight->modifyFilter(_filterRight, FILTER_SIZE);
 		}
 		break;
 		case KEY_SW5:
@@ -61,8 +59,6 @@ void Controller::pressedSwitch(short sw)
 			vector.y = cosd(_azim)*cosd(_pitch);
 			vector.z = sind(_pitch);
 			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
-			_spatialAlgoLeft->modifyFilter(_filterLeft, FILTER_SIZE);
-			_spatialAlgoRight->modifyFilter(_filterRight, FILTER_SIZE);
 		}
 		break;
 		case KEY_SW6:
@@ -71,8 +67,6 @@ void Controller::pressedSwitch(short sw)
 			vector.y = cosd(_azim)*cosd(_pitch);
 			vector.z = sind(_pitch);
 			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
-			_spatialAlgoLeft->modifyFilter(_filterLeft, FILTER_SIZE);
-			_spatialAlgoRight->modifyFilter(_filterRight, FILTER_SIZE);
 			break;
 		case KEY_SW7:
 			_pitch += 15;
@@ -80,10 +74,10 @@ void Controller::pressedSwitch(short sw)
 			vector.y = cosd(_azim)*cosd(_pitch);
 			vector.z = sind(_pitch);
 			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
-			_spatialAlgoLeft->modifyFilter(_filterLeft, FILTER_SIZE);
-			_spatialAlgoRight->modifyFilter(_filterRight, FILTER_SIZE);
 			break;
 	}
+	_spatialAlgoLeft->modifyFilter(_filterLeft, FILTER_SIZE);
+	_spatialAlgoRight->modifyFilter(_filterRight, FILTER_SIZE);
 }
 
 

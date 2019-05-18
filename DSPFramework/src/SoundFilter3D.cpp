@@ -71,7 +71,7 @@ void SoundFilter3D::interpolateFilter(fract* filterOut, filterTriangle triangle,
 	weights.x = SquareRootApprox(weights.x);
 	weights.y = SquareRootApprox(weights.y);
 	weights.z = SquareRootApprox(weights.z);
-	for (int i = 0; (i<FILTER_SIZE)&&(i<delay); i++){
+	for (int i = 0; (i<FILTER_SIZE); i++){
 		filterOut[i] = 0;
 	}
 	for (int i = 0; (i<COEFFICIENTS)&&(i+delay<FILTER_SIZE); i++){

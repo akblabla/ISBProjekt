@@ -11,13 +11,13 @@
 #include <math.h>
 
 SoundFilter3D _filterFactory;   // create sound filter with orientation vector as parameter
-SpatialSoundAlgo* _spatialAlgoLeft;
-SpatialSoundAlgo* _spatialAlgoRight;
+FirFilterAlgo* _spatialAlgoLeft;
+FirFilterAlgo* _spatialAlgoRight;
 fract _filterLeft[FILTER_SIZE];
 fract _filterRight[FILTER_SIZE];
 float _pitch;
 float _azim;
-Controller::Controller(SpatialSoundAlgo* spatialAlgoLeft,SpatialSoundAlgo* spatialAlgoRight) //: m_band(0)
+Controller::Controller(FirFilterAlgo* spatialAlgoLeft,FirFilterAlgo* spatialAlgoRight) //: m_band(0)
 {
 	_spatialAlgoLeft = spatialAlgoLeft;
 	_spatialAlgoRight = spatialAlgoRight;
@@ -35,9 +35,6 @@ void Controller::updateUI()
 
 }
 
-#define cos15 0.9659258262k
-#define sin15 0.2588190451k
-
 void Controller::pressedSwitch(short sw)
 {
 	fractVector3d vector;
@@ -46,8 +43,8 @@ void Controller::pressedSwitch(short sw)
 		case KEY_SW4:
 		{
 			_azim -= 15;
-			vector.x = sind(_azim)*cosd(_pitch);
-			vector.y = cosd(_azim)*cosd(_pitch);
+			vector.x = cosd(_azim)*cosd(_pitch);
+			vector.y = sind(_azim)*cosd(_pitch);
 			vector.z = sind(_pitch);
 			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
 		}
@@ -55,23 +52,23 @@ void Controller::pressedSwitch(short sw)
 		case KEY_SW5:
 		{
 			_azim += 15;
-			vector.x = sind(_azim)*cosd(_pitch);
-			vector.y = cosd(_azim)*cosd(_pitch);
+			vector.x = cosd(_azim)*cosd(_pitch);
+			vector.y = sind(_azim)*cosd(_pitch);
 			vector.z = sind(_pitch);
 			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
 		}
 		break;
 		case KEY_SW6:
 			_pitch -= 15;
-			vector.x = sind(_azim)*cosd(_pitch);
-			vector.y = cosd(_azim)*cosd(_pitch);
+			vector.x = cosd(_azim)*cosd(_pitch);
+			vector.y = sind(_azim)*cosd(_pitch);
 			vector.z = sind(_pitch);
 			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
 			break;
 		case KEY_SW7:
 			_pitch += 15;
-			vector.x = sind(_azim)*cosd(_pitch);
-			vector.y = cosd(_azim)*cosd(_pitch);
+			vector.x = cosd(_azim)*cosd(_pitch);
+			vector.y = sind(_azim)*cosd(_pitch);
 			vector.z = sind(_pitch);
 			_filterFactory.makeFilters(_filterLeft, _filterRight, vector);
 			break;

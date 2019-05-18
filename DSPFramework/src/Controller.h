@@ -8,15 +8,15 @@
 #if !defined(CONTROLLER__INCLUDED_)
 #define CONTROLLER__INCLUDED_
 #include <stdfix.h>
-#include "SpatialSoundAlgo.h"
 #include "FilterStructs.h"
+#include "FirFilterAlgo.h"
 
 class Controller
 {
 
 public:
 
-	Controller::Controller(SpatialSoundAlgo* spatialAlgoLeft, SpatialSoundAlgo* spatialAlgoRight);
+	Controller::Controller(FirFilterAlgo* spatialAlgoLeft, FirFilterAlgo* spatialAlgoRight);
 	virtual ~Controller();
 	void pressedSwitch(short sw);
 

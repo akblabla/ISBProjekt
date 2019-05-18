@@ -13,16 +13,16 @@
 					 //  in this program:sysreg_write()
 #include "Controller.h"
 #include "AlgoTester.h"
+#include "FirFilterAlgo.h"
 #include "RegisterManager.h"
-#include "SpatialSoundAlgo.h"
 
 // Initialization of sample block processing inputs
 void InitProcess(Algorithm *left, Algorithm *right);
 // Initialization of control for switch inputs
 void InitSwitch(Controller *ctrl);
 
-SpatialSoundAlgo leftAlgo;
-SpatialSoundAlgo rightAlgo;
+FirFilterAlgo leftAlgo;
+FirFilterAlgo rightAlgo;
 
 
 // Instance of dummy algorithm for left and right stereo channels

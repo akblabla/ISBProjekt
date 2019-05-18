@@ -5,25 +5,27 @@
  *      Author: kaspe
  */
 
-#ifndef SPATIALSOUNDALGO_H_
-#define SPATIALSOUNDALGO_H_
+#ifndef FIRFILTERALGO_H_
+#define FIRFILTERALGO_H_
 
 #include "Algorithm.h"
 #include <stdfix.h>
 #include <filter.h>
 #include "FilterStructs.h"
 
-class SpatialSoundAlgo : public Algorithm {
+class FirFilterAlgo : public Algorithm {
 public:
-	SpatialSoundAlgo();
-	virtual ~SpatialSoundAlgo();
+	FirFilterAlgo();
+	virtual ~FirFilterAlgo();
 
 	virtual void process(short* input, short* output, short len);
 	virtual void create();
 	virtual void create(fract* filter, int length);
 	virtual void modifyFilter(fract* filter, int length);
 
-	float fastInverseSquare(float input);
+	int _cir_ptr;
+	fract* _filterPtr;
+
 	fract _firFilter[FILTER_SIZE];
 	fract _delayLine[FILTER_SIZE];
 	fir_state_fx16 _filterState;
@@ -34,4 +36,4 @@ public:
 
 };
 
-#endif /* SPATIALSOUNDALGO_H_ */
+#endif /* FIRFILTERALGO_H_ */

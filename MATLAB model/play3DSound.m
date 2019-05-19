@@ -59,7 +59,7 @@ R = eul2rotm(deg2rad([azimut,elevation,0]));
 spherePatch.Vertices = (R * initSphereVert')';
 
 r = R * [1,0,0]';
-rMirror = R' * [1,0,0]';
+rMirror = [r(1),-r(2),r(3)]';
 
 triangleID = findFilterTriangle(r,triangleArray);
 mirrorTriangleID = findFilterTriangle(rMirror,triangleArray);

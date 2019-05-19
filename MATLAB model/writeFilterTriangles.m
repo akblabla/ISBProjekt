@@ -8,9 +8,9 @@ for n = 1:M
     ID = filterID(n,:);
     
     fprintf(fileID, "%d,%d,%d,",ID(1),ID(2),ID(3));
-    fprintf(fileID, "%1.15f,%1.15f,%1.15f,",E1(n,1),E1(n,2),E1(n,3));
-    fprintf(fileID, "%1.15f,%1.15f,%1.15f,",E2(n,1),E2(n,2),E2(n,3));
-    fprintf(fileID, "%1.15f,%1.15f,%1.15f,",E3(n,1),E3(n,2),E3(n,3));
+    fprintf(fileID, "%1.31f,%1.31f,%1.31f,",E1(n,1),E1(n,2),E1(n,3));
+    fprintf(fileID, "%1.31f,%1.31f,%1.31f,",E2(n,1),E2(n,2),E2(n,3));
+    fprintf(fileID, "%1.31f,%1.31f,%1.31f,",E3(n,1),E3(n,2),E3(n,3));
     
     if n < M
         fprintf(fileID, "%1.15f,%1.15f,%1.15f,%1.15f,%1.15f,%1.15f,%1.15f,%1.15f,%1.15f,",...

@@ -50,12 +50,11 @@ void FilterManager::init()
 	//error = readFracts(directionVectors,3*FILTERS,"..\\src\\direction_vectors.txt");
 
 	// sort data
-	for(short n = 0;n < FILTERS;n++)
+	for(int n = 0;n < FILTERS;n++)
 	{
-		for(short i = 0;i < COEFFICIENTS;i++)
+		for(int i = 0;i < COEFFICIENTS;i++)
 		{
 			HRTFFilterArray[n].coefficients[i] = coefficientBuffer[n*COEFFICIENTS + i];
-
 		}
 		// initialize HRTFFilterHeaderArray
 		HRTFFilterHeaderArray[n].delay = delays[n];
@@ -126,8 +125,10 @@ void FilterManager::loadFilterTriangles(HRTFFilter* filtersA, int* triangleIDA, 
 	filtersB = &(filterBuffers[0][0][currentBuffer]);*/
 	for (int i = 0; i<3;++i){
 		for (int j = 0; j<COEFFICIENTS;++j){
-			filtersA[i].coefficients[j]=HRTFFilterArray[getTriangle(*triangleIDA).filterIDs[i]].coefficients[j];
-			filtersB[i].coefficients[j]=HRTFFilterArray[getTriangle(*triangleIDB).filterIDs[i]].coefficients[j];
+			int filterIDA = getTriangle(*triangleIDA).filterIDs[i];
+			int filterIDB = getTriangle(*triangleIDB).filterIDs[i];
+			filtersA[i].coefficients[j]=HRTFFilterArray[filterIDA].coefficients[j];
+			filtersB[i].coefficients[j]=HRTFFilterArray[filterIDB].coefficients[j];
 		}
 	}
 }

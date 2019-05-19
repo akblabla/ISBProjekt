@@ -31,7 +31,7 @@ extern "C" {
 		*/
 
 		pAlgoLeft->process(sCh0LeftIn, sCh0LeftOut, INPUT_SIZE);
-		pAlgoRight->process(sCh0RightIn, sCh0RightOut, INPUT_SIZE);
+		pAlgoRight->process(sCh0LeftIn, sCh0RightOut, INPUT_SIZE);
 	
 	}
 

@@ -8,10 +8,9 @@
 #include "FirFilterAlgo.h"
 #include <builtins.h>
 
-
+fract* _filterPtr;
 FirFilterAlgo::FirFilterAlgo() {
 	fir_init(_filterState,_firFilter,_delayLine,FILTER_SIZE,0);
-	_filterPtr = _firFilter;
 }
 float y = 0;
 FirFilterAlgo::~FirFilterAlgo() {

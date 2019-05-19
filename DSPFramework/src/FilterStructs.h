@@ -11,6 +11,13 @@ struct fractVector3d{
 	fract y;
 	fract z;
 };
+
+struct longFractVector3d{
+	long fract x;
+	long fract y;
+	long fract z;
+};
+
 struct HRTFFilter{
 	fract coefficients[COEFFICIENTS];
 };
@@ -31,7 +38,7 @@ struct HRTFFilterHeader{
 struct filterTriangle{
 	int filterIDs[3];
 	#pragma align(4)
-	fractVector3d edges[3];
+	longFractVector3d edges[3];
 	#pragma align(4)
 	accum projectionMatrix[3][3];
 };

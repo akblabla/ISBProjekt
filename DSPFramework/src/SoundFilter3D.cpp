@@ -40,7 +40,7 @@ void SoundFilter3D::makeFilters(fract* filterLeft, fract* filterRight, fractVect
 
 //2. order taylor approximation of inverse squareroot around 1
 accum SoundFilter3D::inverseSquareRoot2ndTaylor(accum x){
-	return 1-(x-1)*((accum) 0.5)+(x-1)*(x-1)*((accum) 0.5*(accum) 1.5);
+	return 1-(x-1)*((accum) 0.5)+(x-1)*(x-1)*((accum) 0.5*(accum) 1.5)*0.5;
 }
 fract SoundFilter3D::SquareRootApprox(fract x){
 	return (fract) sqrt((float) x);
@@ -85,6 +85,14 @@ fractVector3d SoundFilter3D::findWeights(filterTriangle triangle, fractVector3d 
 	weightsNotNormalized.x = orientation.x*triangle.projectionMatrix[0][0]+orientation.y*triangle.projectionMatrix[1][0]+orientation.z*triangle.projectionMatrix[2][0];
 	weightsNotNormalized.y = orientation.x*triangle.projectionMatrix[0][1]+orientation.y*triangle.projectionMatrix[1][1]+orientation.z*triangle.projectionMatrix[2][1];
 	weightsNotNormalized.z = orientation.x*triangle.projectionMatrix[0][2]+orientation.y*triangle.projectionMatrix[1][2]+orientation.z*triangle.projectionMatrix[2][2];
+
+	//if a weight is negative, it means our orientation is outside the found triangle, so orientate the sound so it is at the closest spot on the triangle.
+	if (weightsNotNormalized.x<0)
+		weightsNotNormalized.x = 0;
+	if (weightsNotNormalized.y<0)
+		weightsNotNormalized.y = 0;
+	if (weightsNotNormalized.z<0)
+		weightsNotNormalized.z = 0;
 	fractVector3d weights = normalize(weightsNotNormalized);
 	return weights;
 }
@@ -97,10 +105,10 @@ int SoundFilter3D::findFilterTriangle(fractVector3d orientation){
 		triangle = _filterManager.getTriangle(i);
 		accum dotProduct[3];
 		for (int j = 0; j<3; ++j){
-			fractVector3d edge = triangle.edges[j];
+			longFractVector3d edge = triangle.edges[j];
 			dotProduct[j]=(accum)(edge.x*orientation.x)+(accum)(edge.y*orientation.y)+(accum)(edge.z*orientation.z);
 		}
-		if (dotProduct[0]>=0 && dotProduct[1]>=0 && dotProduct[2]>=0){
+		if (dotProduct[0]>=-0.000030517578125 && dotProduct[1]>=-0.000030517578125 && dotProduct[2]>=-0.000030517578125){
 			return i;
 		}
 	}

@@ -16,7 +16,7 @@ class Controller
 
 public:
 
-	Controller::Controller(FirFilterAlgo* spatialAlgoLeft, FirFilterAlgo* spatialAlgoRight);
+	Controller(FirFilterAlgo* spatialAlgoLeft, FirFilterAlgo* spatialAlgoRight);
 	virtual ~Controller();
 	void pressedSwitch(short sw);
 

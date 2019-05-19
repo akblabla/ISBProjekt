@@ -4,8 +4,8 @@ function [filterArray,triangleArray] = createStructs(R,delay,finalIR,filterID,E1
 filterArray = struct('orientation',zeros(3,1),'delay',0,...
                      'IR',zeros(150,1));
 
-N = 187;                 
-M = 370;                 
+N = size(R,1);                 
+M = size(E1,1);                 
 for n = 1:N                 
 
     filterArray(n).orientation = R(n,:)';

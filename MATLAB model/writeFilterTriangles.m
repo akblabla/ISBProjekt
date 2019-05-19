@@ -5,7 +5,7 @@ fileID = fopen('filterTriangle.txt','w');
 M = size(filterID,1);
 for n = 1:M
    
-    ID = filterID(n,:);
+    ID = filterID(n,:) - 1;
     
     fprintf(fileID, "%d,%d,%d,",ID(1),ID(2),ID(3));
     fprintf(fileID, "%1.31f,%1.31f,%1.31f,",E1(n,1),E1(n,2),E1(n,3));

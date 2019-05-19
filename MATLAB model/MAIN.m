@@ -53,4 +53,14 @@ writeFilterTriangles(filterIDs,E1,E2,E3,PM);
 [filterArray,triangleArray] = createStructs(r',delay,IR,filterIDs,E1,E2,E3,PM);
 
 %% start 3D sound simulator
-play3DSound('giza.wav',filterArray,triangleArray);
+play3DSound('thank-god-its-friday.wav',filterArray,triangleArray);
+
+%%
+% [direction,mirrorDirection,ID,mirrorID,weights,mirrorWeights,irLeft,irRight] = ...
+% returnInterpolationData(-10,-5,filterArray,triangleArray,filterIDs,r);
+% direction
+% ID
+% weights
+% mirrorDirection
+% mirrorID
+% mirrorWeights

@@ -4,8 +4,8 @@ R = r';
 
 filterID = convhulln(R);
 
-M = 370;
-N = 187;
+M = size(filterID,1);
+N = size(r,2);
 PM = zeros(3,3,M);
 E1 = zeros(N,3);
 E2 = zeros(N,3);

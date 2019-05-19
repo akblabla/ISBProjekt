@@ -66,6 +66,16 @@ mirrorTriangleID = findFilterTriangle(rMirror,triangleArray);
 
 weights = findWeights(triangleID,triangleArray,r);
 mirrorWeights = findWeights(mirrorTriangleID,triangleArray,rMirror);
+for n = 1:3
+   
+    if abs(weights(n)) < 1e-6
+        weights(n) = 0;
+    end
+    if abs(mirrorWeights(n)) < 1e-6
+        mirrorWeights(n) = 0;
+    end
+    
+end
 
 ipIRLeft = interpolateFilter(weights,triangleID,filterArray,triangleArray);
 ipIRRight = interpolateFilter(mirrorWeights,mirrorTriangleID,filterArray,triangleArray);

@@ -19,7 +19,7 @@ quiver3(0,0,0,r(1,n),r(2,n),r(3,n),'LineWidth',2);
 hold on
 
 end
-title('Orientations contained
+title('Direction vectors');
 axis equal;
 set(gca,'Zdir','reverse');
 set(gca,'Ydir','reverse');
@@ -38,6 +38,7 @@ writeDirectionVectors(r);
 %% plot triangles
 figure;
 trisurf(filterIDs,r(1,:),r(2,:),r(3,:));
+title('Triangles used for interpolation');
 set(gca,'Zdir','reverse');
 set(gca,'Ydir','reverse');
 xlabel('x');
@@ -52,4 +53,14 @@ writeFilterTriangles(filterIDs,E1,E2,E3,PM);
 [filterArray,triangleArray] = createStructs(r',delay,IR,filterIDs,E1,E2,E3,PM);
 
 %% start 3D sound simulator
-play3DSound('giza.wav',filterArray,triangleArray);
+play3DSound('thank-god-its-friday.wav',filterArray,triangleArray);
+
+%%
+[direction,mirrorDirection,ID,mirrorID,weights,mirrorWeights,irLeft,irRight] = ...
+returnInterpolationData(-10,5,filterArray,triangleArray,filterIDs,r);
+direction
+ID
+weights
+mirrorDirection
+mirrorID
+mirrorWeights

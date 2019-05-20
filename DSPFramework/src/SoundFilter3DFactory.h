@@ -5,30 +5,28 @@
  *      Author: kaspe
  */
 
-#ifndef SOUNDFILTER3D_H_
-#define SOUNDFILTER3D_H_
+#ifndef SOUNDFILTER3DFACTORY_H_
+#define SOUNDFILTER3DFACTORY_H_
 #include <stdfix.h>
 #include "FilterStructs.h"
 #include "FilterManager.h"
 #include <math.h>
-class SoundFilter3D {
+class SoundFilter3DFactory {
 public:
-	SoundFilter3D();
-	virtual ~SoundFilter3D();
+	SoundFilter3DFactory();
+	virtual ~SoundFilter3DFactory();
 	void makeFilters(fract* leftFilter, fract* rightFilter, fractVector3d orientation);
 
 private:
-	
+	void makeFilter(fract* filter, fractVector3d orientation);
 	fractVector3d normalize(accumVector3d vector);
 	accum inverseSquareRoot2ndTaylor(accum x);
 	fract SquareRootApprox(fract x);
-
-	void interpolateFilter(fract* filterOut, filterTriangle triangle, HRTFFilter* inputFilters, fractVector3d weights);
+	void interpolateFilter(fract* filterOut, filterTriangle triangle, fractVector3d weights);
 	fractVector3d findWeights(filterTriangle triangle, fractVector3d orientation);
-	void loadFilters(filterTriangle triangle);
 	int findFilterTriangle(fractVector3d orientation);
 
 	FilterManager _filterManager;
 };
 
-#endif /* SOUNDFILTER3D_H_ */
+#endif /* SOUNDFILTER3DFACTORY_H_ */

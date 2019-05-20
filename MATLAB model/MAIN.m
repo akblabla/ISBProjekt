@@ -29,8 +29,7 @@ zlabel('z');
 
 %% write filter coefficients, delays and direction vectors to files for import to Blackfin 533 EZ-Kit
 writeCoefficients(IR);
-csvwrite('delay.txt',delay');
-writeDirectionVectors(r);
+writeHeaders(r,delay);
 
 %% compute filter IDs, triangle edges and projection matrices
 [filterIDs, E1, E2, E3, PM] = computeTriangleData(r);
@@ -48,6 +47,9 @@ axis equal;
 
 %% write filter IDs, triangle edges and projection matrices to file for use on Blackfin 533 EZ-Kit
 writeFilterTriangles(filterIDs,E1,E2,E3,PM);
+
+%% write tweedle values, for faster sinudal computation
+writeTweedleCoefficients(24);
 
 %% create filter and triangle structs
 [filterArray,triangleArray] = createStructs(r',delay,IR,filterIDs,E1,E2,E3,PM);

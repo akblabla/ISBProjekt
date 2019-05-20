@@ -63,6 +63,7 @@ void main(void)
 	InitSystemHardware(); // Initialization of BF533
 	InitAlgoProcess(); // Initialization of processing algorithms
 	InitProcess(&leftAlgo,&rightAlgo);
+	Ctrl.init();
 	printf("Application running: SW4 turns filter on, SW5 turns filter off\r\n");
 	Init_Interrupt(); // Enable interrupts
 	Enable_DMA();

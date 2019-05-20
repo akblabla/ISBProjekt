@@ -1,0 +1,15 @@
+.FirFilterAlgo test
+
+lyd input skal valideres.
+check om lyden filteres korrekt.
+Lyt om lyden kommer ud korrekt (eller brug matlab med mic in og lyd ud).
+
+SoundFilter3D
+Test om retningsvektorene giver mening
+Test om den finde de rigtige trekanter ID'er frem.
+Test om den får fat i de rigtige trekant structs
+
+test om den får fat i de rigtige filtre. også rækkefølgen om den passer
+test om den finder de rigtige vægte
+test om den interpolere rigtigt
+test om filteret bliver lagt ordenligt over i  FirFilterAlgo

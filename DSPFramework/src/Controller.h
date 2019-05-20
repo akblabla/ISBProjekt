@@ -18,6 +18,7 @@ public:
 
 	Controller(FirFilterAlgo* spatialAlgoLeft, FirFilterAlgo* spatialAlgoRight);
 	virtual ~Controller();
+	void init();
 	void pressedSwitch(short sw);
 
 protected:

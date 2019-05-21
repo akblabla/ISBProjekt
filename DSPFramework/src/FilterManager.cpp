@@ -21,13 +21,6 @@ filterTriangle filterTriangleArray[TRIANGLES] =
 #include "filter_triangle.txt"
 };
 
-HRTFFilter filterBuffers[3][2][2];
-int loadingTriangleID[2][2];
-int currentBuffer;
-DMADestriptor srcDMADescriptors[5];
-DMADestriptor destDMADescriptors[5];
-
-
 
 FilterManager::FilterManager()
 {

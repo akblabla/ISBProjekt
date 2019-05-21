@@ -15,7 +15,7 @@ SoundFilter3DFactory::SoundFilter3DFactory() {
 void SoundFilter3DFactory::makeFilters(fract* filterLeft, fract* filterRight, fractVector3d orientation){
 
 	fractVector3d mirrorOrientation = orientation;
-	orientation.y *= -1;
+	mirrorOrientation.y *= -1;
 	makeFilter(filterLeft,orientation);
 	makeFilter(filterRight,mirrorOrientation);
 }
@@ -25,7 +25,6 @@ void SoundFilter3DFactory::makeFilter(fract* filter, fractVector3d orientation){
 	int triangleID;
 	triangleID = findFilterTriangle(orientation);
 	filterTriangle triangle = _filterManager.getTriangle(triangleID);
-	int loadedTriangleID = triangleID;
 	fractVector3d weights;
 	weights = findWeights(triangle, orientation);
 	interpolateFilter(filter, triangle, weights);

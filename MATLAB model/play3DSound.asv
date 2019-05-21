@@ -22,7 +22,7 @@ end
 [y,fs] = audioread(soundFile);
 y = y(:,1); % use only one channel
 y = resample(y,48000,fs);
-fs = 48000;
+fs
 
 %% add sliders
 azimutSlider = uicontrol('Parent',fig,'Style','slider','Position',[81,74,419,23],...

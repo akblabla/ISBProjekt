@@ -7,6 +7,7 @@ clear
 load 'HRIRrepository/S001_marl-nyu.mat';
 [IR,delay,azimuth,elevation] = loadData(data);
 
+
 %% compute direction vectors corresponding to existing sound directions
 r = computeDirectionVectors(azimuth,elevation);
 

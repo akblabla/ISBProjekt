@@ -1,6 +1,6 @@
 function [finalIR, delay, azimuth, elevation] = loadData(data)
 
-ORIGINALFSIZE = size(data(1).IR,1);
+ORIGINALFSIZE = size(resample(data(1).IR(:,1),48000,44100),1);
 FILTERSIZE = 150;
 ORIENTATIONS = size(data,2);
 
@@ -13,7 +13,7 @@ elevation = zeros(187,1);
 % load coefficients
 for n = 1:ORIENTATIONS
 
-    originalIR(:,n) = data(n).IR(:,1);
+    originalIR(:,n) = resample(data(n).IR(:,1),48000,44100);
     
     for i = 1:size(originalIR,1)
       

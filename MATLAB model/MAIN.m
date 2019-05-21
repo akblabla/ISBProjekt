@@ -57,13 +57,3 @@ writeTweedleCoefficients(24);
 
 %% start 3D sound simulator
 play3DSound('thank-god-its-friday.wav',filterArray,triangleArray);
-
-%%
-% [direction,mirrorDirection,ID,mirrorID,weights,mirrorWeights,irLeft,irRight] = ...
-% returnInterpolationData(-10,-5,filterArray,triangleArray,filterIDs,r);
-% direction
-% ID
-% weights
-% mirrorDirection
-% mirrorID
-% mirrorWeights

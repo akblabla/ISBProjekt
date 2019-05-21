@@ -7,10 +7,6 @@ clear
 load 'HRIRrepository/S001_marl-nyu.mat';
 [IR,delay,azimuth,elevation] = loadData(data);
 
-%% normalize impulseresponses
-finalIR = normalizeIR(IR);
-
-
 %% compute direction vectors corresponding to existing sound directions
 r = computeDirectionVectors(azimuth,elevation);
 
@@ -32,9 +28,8 @@ ylabel('y');
 zlabel('z');
 
 %% write filter coefficients, delays and direction vectors to files for import to Blackfin 533 EZ-Kit
-writeCoefficients(finalIR);
-csvwrite('delay.txt',delay');
-writeDirectionVectors(r);
+writeCoefficients(IR);
+writeHeaders(r,delay);
 
 %% compute filter IDs, triangle edges and projection matrices
 [filterIDs, E1, E2, E3, PM] = computeTriangleData(r);
@@ -53,20 +48,21 @@ axis equal;
 %% write filter IDs, triangle edges and projection matrices to file for use on Blackfin 533 EZ-Kit
 writeFilterTriangles(filterIDs,E1,E2,E3,PM);
 
+%% write tweedle values, for faster sinudal computation
+writeTweedleCoefficients(24);
+
 %% create filter and triangle structs
-[filterArray,triangleArray] = createStructs(r',delay,finalIR,filterIDs,E1,E2,E3,PM);
+[filterArray,triangleArray] = createStructs(r',delay,IR,filterIDs,E1,E2,E3,PM);
 
 %% start 3D sound simulator
 play3DSound('thank-god-its-friday.wav',filterArray,triangleArray);
 
 %%
-[direction,mirrorDirection, triangleID, filterIDs ,mirrorTriangleID, mirrorFilterIDs,weights,mirrorWeights,irLeft,irRight] = ...
-returnInterpolationData(-10,-5,filterArray,triangleArray,filterIDs,r);
-direction
-triangleID
-filterIDs
-weights
-mirrorDirection
-mirrorTriangleID
-mirrorFilterIDs
-mirrorWeights
+% [direction,mirrorDirection,ID,mirrorID,weights,mirrorWeights,irLeft,irRight] = ...
+% returnInterpolationData(-10,-5,filterArray,triangleArray,filterIDs,r);
+% direction
+% ID
+% weights
+% mirrorDirection
+% mirrorID
+% mirrorWeights

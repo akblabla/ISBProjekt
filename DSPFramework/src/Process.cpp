@@ -6,6 +6,8 @@
 ///////////////////////////////////////////////////////////
 #include "Algorithm.h"
 #include "RegisterManager.h"
+#include <cycle_count.h>
+#include <stdio.h>
 
 Algorithm *pAlgoLeft;
 Algorithm *pAlgoRight;
@@ -29,9 +31,13 @@ extern "C" {
 			sCh1RightOut[i] = sCh1RightIn[i];
 		}
 		*/
-
+		cycle_t start_count;
+		cycle_t final_count;
+		START_CYCLE_COUNT(start_count);
 		pAlgoLeft->process(sCh0LeftIn, sCh0LeftOut, INPUT_SIZE);
 		pAlgoRight->process(sCh0LeftIn, sCh0RightOut, INPUT_SIZE);
+		STOP_CYCLE_COUNT(final_count,start_count);
+		PRINT_CYCLES("Number of cycles per block of 512 samples: ", final_count);
 	
 	}
 

@@ -25,11 +25,11 @@ public:
 
 	int _cir_ptr;
 	fract* _filterPtr;
-
 	#pragma section("L1_data_a")
 	fract _firFilter[FILTER_SIZE];
 	#pragma section("L1_data_b")
 	fract _delayLine[FILTER_SIZE];
+
 	fir_state_fx16 _filterState;
 
 	fract _firFilterTemp[FILTER_SIZE];
@@ -37,5 +37,4 @@ public:
 	bool _changedFilter;
 
 };
-
 #endif /* FIRFILTERALGO_H_ */

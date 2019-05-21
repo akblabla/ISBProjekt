@@ -42,6 +42,7 @@
 								<option id="compiler.option.additionaldirectories.1314085279" name="Additional include directories (-I):" superClass="compiler.option.additionaldirectories" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/system}&quot;"/>
 								</option>
+								<option id="blackfin.compiler.option.additionaloptions.692488419" name="Additional options:" superClass="blackfin.compiler.option.additionaloptions" valueType="stringList"/>
 								<inputType id="compiler.inputType.994287120" name="C/C++ Source" superClass="compiler.inputType"/>
 							</tool>
 							<tool id="blackfin.toolchain.linker.1780070824" name="CrossCore Blackfin Linker" superClass="blackfin.toolchain.linker">
@@ -186,4 +187,5 @@
 			<resource resourceType="PROJECT" workspacePath="/DSPFramework"/>
 		</configuration>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>

@@ -6,6 +6,8 @@
  */
 
 #include "SoundFilter3DFactory.h"
+#include <cycle_count.h>
+#include <stdio.h>
 
 SoundFilter3DFactory::SoundFilter3DFactory() {
 
@@ -35,10 +37,6 @@ void SoundFilter3DFactory::makeFilter(fract* filter, fractVector3d orientation){
 accum SoundFilter3DFactory::inverseSquareRoot2ndTaylor(accum x){
 	return 1-(x-1)*((accum) 0.5)+(x-1)*(x-1)*((accum) 0.5*(accum) 1.5)*0.5;
 }
-fract SoundFilter3DFactory::SquareRootApprox(fract x){
-	return (fract) sqrt((float) x);
-}
-
 
 fractVector3d SoundFilter3DFactory::normalize(accumVector3d vector){
 	accum squareLength = vector.x*vector.x+vector.y*vector.y+vector.z*vector.z;
@@ -56,17 +54,19 @@ void SoundFilter3DFactory::interpolateFilter(fract* filterOut, filterTriangle tr
 	int delay = 0;
 	HRTFFilterHeader headers[3];
 	HRTFFilter inputFilters[3];
+	cycle_t start_count;
+	cycle_t final_count;
+	START_CYCLE_COUNT(start_count);
 	for (int i = 0; i<3;++i){
 		int id = triangle.filterIDs[i];
 		headers[i] = _filterManager.getHRTFHeader(id);
+
 		inputFilters[i] = _filterManager.getHRTFFilter(id);
 		delay+=headers[i].delay;
 	}
+	STOP_CYCLE_COUNT(final_count,start_count);
+	PRINT_CYCLES("Number of cycles per block of 512 samples: ", final_count);
 	delay/=3;
-	//Assume linear independence, so we need to square the weights to avoid changing the effect of the filter.
-	weights.x = SquareRootApprox(weights.x);
-	weights.y = SquareRootApprox(weights.y);
-	weights.z = SquareRootApprox(weights.z);
 	for (int i = 0; (i<FILTER_SIZE); i++){
 		filterOut[i] = 0;
 	}
@@ -89,6 +89,8 @@ fractVector3d SoundFilter3DFactory::findWeights(filterTriangle triangle, fractVe
 		weightsNotNormalized.y = 0;
 	if (weightsNotNormalized.z<0)
 		weightsNotNormalized.z = 0;
+	//Assume linear independence, so the weights are assumed to be perpendicular, and since the weight shouldn't modify the effect of the output signal,
+	//we make the weights have a combined length of 1.
 	fractVector3d weights = normalize(weightsNotNormalized);
 	return weights;
 }

@@ -43,7 +43,7 @@ M = size(finalIR,2);
 for n = 1:M
    
     finalIR(:,n) = finalIR(:,n) / scaling;
-    finalIR(:,n) = finalIR(:,n) / sqrt(1/sqrt(3));
+    finalIR(:,n) = finalIR(:,n) / sqrt(3);
     
 end
 

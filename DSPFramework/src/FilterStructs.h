@@ -37,9 +37,7 @@ struct HRTFFilterHeader{
 struct filterTriangle{
 	int triangleID;
 	int filterIDs[3];
-	#pragma align(4)
 	longFractVector3d edges[3];
-	#pragma align(4)
 	accum projectionMatrix[3][3];
 };
 

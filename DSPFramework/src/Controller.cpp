@@ -8,9 +8,14 @@
 #include "Controller.h"
 #include "RegisterManager.h"
 #include <math.h>
+#include <cycle_count.h>
+#include <cycles.h>
+#include <stdio.h>
 
 #include "SoundFilter3DFactory.h"
 #define pi 3.141592
+cycle_stats_t stats;
+
 SoundFilter3DFactory _filterFactory;   // create sound filter with orientation vector as parameter
 FirFilterAlgo* _spatialAlgoLeft;
 FirFilterAlgo* _spatialAlgoRight;
@@ -28,6 +33,7 @@ fract tweedle_sin[] = {
 
 Controller::Controller(FirFilterAlgo* spatialAlgoLeft,FirFilterAlgo* spatialAlgoRight) //: m_band(0)
 {
+	CYCLES_INIT(stats);
 	_spatialAlgoLeft = spatialAlgoLeft;
 	_spatialAlgoRight = spatialAlgoRight;
 	_pitch = 0;
@@ -61,6 +67,7 @@ fractVector3d calculateUnitVector(int azim, int pitch){
 }
 void Controller::pressedSwitch(short sw)
 {
+	CYCLES_START(stats);
 	fractVector3d vector;
 
 	switch (sw) {
@@ -95,6 +102,11 @@ void Controller::pressedSwitch(short sw)
 	}
 	_spatialAlgoLeft->modifyFilter(_filterLeft, FILTER_SIZE);
 	_spatialAlgoRight->modifyFilter(_filterRight, FILTER_SIZE);
+	CYCLES_STOP(stats);
+#if defined( DO_CYCLE_COUNTS )
+	printf("make filter statistics:\n");
+#endif
+	CYCLES_PRINT(stats);
 }
 
 

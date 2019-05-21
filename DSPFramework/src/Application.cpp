@@ -24,7 +24,6 @@ void InitSwitch(Controller *ctrl);
 FirFilterAlgo leftAlgo;
 FirFilterAlgo rightAlgo;
 
-
 // Instance of dummy algorithm for left and right stereo channels
 
 // Instance of controller left and right
@@ -54,21 +53,12 @@ void main(void)
 {
 	sysreg_write(reg_SYSCFG, 0x32); //Enable 64-bit,free-running cycle-counter
 									//BF533 Hardware Reference pg 4-6 NB!!!
-#if 0
-	// TODO Set to 1 for testing
-	InitAlgoProcess(); // Initialization of processing algorithms
-	AlgoTester algoTest(&leftAlgo);
-	algoTest.runTest("..\\src\\x_signal.txt", "..\\src\\y_signal.txt");
-#else
 	InitSystemHardware(); // Initialization of BF533
 	InitAlgoProcess(); // Initialization of processing algorithms
 	InitProcess(&leftAlgo,&rightAlgo);
 	Ctrl.init();
-	printf("Application running: SW4 turns filter on, SW5 turns filter off\r\n");
 	Init_Interrupt(); // Enable interrupts
 	Enable_DMA();
-#endif
-
 	while(1)
 	{
 		// TODO insert background processing code as necessary

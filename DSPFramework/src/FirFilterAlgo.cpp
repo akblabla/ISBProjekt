@@ -9,10 +9,12 @@
 #include <builtins.h>
 
 fract* _filterPtr;
+
 FirFilterAlgo::FirFilterAlgo() {
 	fir_init(_filterState,_firFilter,_delayLine,FILTER_SIZE,0);
 }
 float y = 0;
+
 FirFilterAlgo::~FirFilterAlgo() {
 	// TODO Auto-generated destructor stub
 }

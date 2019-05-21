@@ -9,14 +9,14 @@
 #include "FilterManager.h"
 
 
-section("sdram0_bank0") HRTFFilter HRTFFilterArray[FILTERS] = {
+const section("sdram0_bank0") HRTFFilter HRTFFilterArray[FILTERS] = {
 #include "impulse_responses.txt"
 };
-HRTFFilterHeader HRTFFilterHeaderArray[FILTERS] =
+const HRTFFilterHeader HRTFFilterHeaderArray[FILTERS] =
 {
 #include "filter_headers.txt"
 };
-filterTriangle filterTriangleArray[TRIANGLES] =
+const filterTriangle filterTriangleArray[TRIANGLES] =
 {
 #include "filter_triangle.txt"
 };

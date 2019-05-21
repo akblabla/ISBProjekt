@@ -19,6 +19,7 @@ struct longFractVector3d{
 };
 
 struct HRTFFilter{
+	int filterID;
 	fract coefficients[COEFFICIENTS];
 };
 struct accumVector3d{
@@ -29,13 +30,12 @@ struct accumVector3d{
 	accum z;
 };
 struct HRTFFilterHeader{
+	int filterID;
 	fractVector3d orientation;
-	#pragma align(4)
 	int delay;
-	#pragma align(4)
-	HRTFFilter* filter;
 };
 struct filterTriangle{
+	int triangleID;
 	int filterIDs[3];
 	#pragma align(4)
 	longFractVector3d edges[3];
